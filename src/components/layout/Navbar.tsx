@@ -90,21 +90,6 @@ const NavLink = styled(Link)`
   }
 `;
 
-const CTAButton = styled(Link)`
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.white};
-  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.xl};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
-  text-decoration: none;
-  transition: all ${({ theme }) => theme.transitions.fast};
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.primaryDark};
-    transform: translateY(-2px);
-  }
-`;
-
 const HamburgerButton = styled.button`
   display: none;
   flex-direction: column;
