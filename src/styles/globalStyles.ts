@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
   /* CSS Reset */
   *, *::before, *::after {
     box-sizing: border-box;
@@ -10,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
 
   /* HTML and Body */
   html {
+    font-size: 16px;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -20,7 +23,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-family: ${({ theme }) => theme.typography.fontFamily.primary};
     font-size: ${({ theme }) => theme.typography.fontSize.base};
-    font-weight: ${({ theme }) => theme.typography.fontWeight.normal};
+    font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
     line-height: ${({ theme }) => theme.typography.lineHeight.normal};
     color: ${({ theme }) => theme.colors.textPrimary};
     background-color: ${({ theme }) => theme.colors.bgPrimary};

@@ -1,55 +1,47 @@
-// TODO: Update colors with brand-specific values after brand identity is finalized
-// TODO: Update fonts with selected brand typography
+// src/styles/theme.ts
 
 export const theme = {
   colors: {
-    // Primary colors - TODO: Replace with brand colors
-    primary: '#2563eb', // Generic blue - replace with brand primary
-    primaryLight: '#60a5fa',
-    primaryDark: '#1e40af',
+    // Primary Brand Colors
+    primary: '#4A90A4',        // Teal blue - main brand color
+    primaryLight: '#6CB4A8',   // Lighter teal - hover states
+    primaryDark: '#3A7A8A',    // Darker teal - pressed states
 
-    // Secondary colors - TODO: Replace with brand colors
-    secondary: '#64748b', // Generic slate - replace with brand secondary
-    secondaryLight: '#94a3b8',
-    secondaryDark: '#475569',
+    // Secondary Brand Colors
+    secondary: '#6CB4A8',      // Secondary color
+    secondaryDark: '#5A9D91',  // Secondary dark
 
-    // Accent colors - TODO: Replace with brand colors
-    accent: '#10b981', // Generic green - replace with brand accent
-    accentLight: '#34d399',
-    accentDark: '#059669',
+    // Neutrals
+    dark: '#2C2C2C',           // Headings, dark text
+    gray: '#666666',           // Body text
+    gray100: '#F5F5F5',        // Very light gray
+    gray300: '#D1D1D1',        // Light gray
+    gray400: '#A0A0A0',        // Medium gray
+    gray500: '#808080',        // Medium gray
+    gray700: '#4D4D4D',        // Dark gray
+    lightGray: '#F7F7F7',      // Section backgrounds
+    border: '#E5E5E5',         // Borders, dividers
+    white: '#FFFFFF',          // Main background
 
-    // Neutral colors
-    white: '#ffffff',
-    black: '#000000',
-    gray50: '#f9fafb',
-    gray100: '#f3f4f6',
-    gray200: '#e5e7eb',
-    gray300: '#d1d5db',
-    gray400: '#9ca3af',
-    gray500: '#6b7280',
-    gray600: '#4b5563',
-    gray700: '#374151',
-    gray800: '#1f2937',
-    gray900: '#111827',
+    // Background Colors
+    bgPrimary: '#FFFFFF',      // Primary background
+    bgSecondary: '#F7F7F7',    // Secondary background
+    bgDark: '#2C2C2C',         // Dark background
 
-    // Text colors
-    textPrimary: '#111827',
-    textSecondary: '#6b7280',
-    textLight: '#9ca3af',
-    textInverse: '#ffffff',
+    // Semantic Colors
+    success: '#4CAF50',        // Success messages
+    error: '#F44336',          // Error messages
+    warning: '#FF9800',        // Warnings
+    info: '#2196F3',           // Info messages
 
-    // Background colors
-    bgPrimary: '#ffffff',
-    bgSecondary: '#f9fafb',
-    bgDark: '#111827',
-
-    // Semantic colors
-    success: '#10b981',
-    warning: '#f59e0b',
-    error: '#ef4444',
-    info: '#3b82f6',
+    // Text Colors
+    textPrimary: '#2C2C2C',
+    textSecondary: '#666666',
+    textLight: '#999999',
+    textWhite: '#FFFFFF',
+    textInverse: '#FFFFFF',    // Text on dark backgrounds
   },
-
+  
   spacing: {
     xs: '0.25rem',    // 4px
     sm: '0.5rem',     // 8px
@@ -58,97 +50,85 @@ export const theme = {
     xl: '2rem',       // 32px
     '2xl': '3rem',    // 48px
     '3xl': '4rem',    // 64px
-    '4xl': '6rem',    // 96px
-    '5xl': '8rem',    // 128px
+    '4xl': '5rem',    // 80px
+    '5xl': '6rem',    // 96px
   },
-
+  
+  breakpoints: {
+    mobile: '480px',
+    tablet: '768px',
+    desktop: '1024px',
+    wide: '1440px',
+  },
+  
   typography: {
-    // Font families - TODO: Update with brand fonts
     fontFamily: {
-      primary: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-      heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-      mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+      primary: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+      heading: "'Montserrat', 'Inter', sans-serif",
     },
-
-    // Font sizes
     fontSize: {
       xs: '0.75rem',      // 12px
       sm: '0.875rem',     // 14px
       base: '1rem',       // 16px
-      lg: '1.125rem',     // 18px
-      xl: '1.25rem',      // 20px
-      '2xl': '1.5rem',    // 24px
-      '3xl': '1.875rem',  // 30px
-      '4xl': '2.25rem',   // 36px
-      '5xl': '3rem',      // 48px
-      '6xl': '3.75rem',   // 60px
-      '7xl': '4.5rem',    // 72px
+      md: '1.125rem',     // 18px
+      lg: '1.25rem',      // 20px
+      xl: '1.5rem',       // 24px
+      '2xl': '1.875rem',  // 30px
+      '3xl': '2.25rem',   // 36px
+      '4xl': '3rem',      // 48px
+      '5xl': '3.75rem',   // 60px
     },
-
-    // Font weights
     fontWeight: {
       light: 300,
-      normal: 400,
+      regular: 400,
       medium: 500,
       semibold: 600,
       bold: 700,
       extrabold: 800,
     },
-
-    // Line heights
     lineHeight: {
       tight: 1.2,
       normal: 1.5,
       relaxed: 1.75,
-      loose: 2,
     },
   },
-
-  breakpoints: {
-    mobile: '320px',
-    tablet: '768px',
-    desktop: '1024px',
-    wide: '1280px',
-    ultrawide: '1536px',
-  },
-
+  
   shadows: {
-    sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-    md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-    none: 'none',
+    sm: '0 1px 2px rgba(0, 0, 0, 0.05)',
+    md: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    lg: '0 10px 15px rgba(0, 0, 0, 0.1)',
+    xl: '0 20px 25px rgba(0, 0, 0, 0.15)',
+    card: '0 2px 8px rgba(0, 0, 0, 0.08)',
+    cardHover: '0 8px 16px rgba(0, 0, 0, 0.12)',
   },
-
+  
   transitions: {
-    fast: '150ms cubic-bezier(0.4, 0, 0.2, 1)',
-    normal: '300ms cubic-bezier(0.4, 0, 0.2, 1)',
-    slow: '500ms cubic-bezier(0.4, 0, 0.2, 1)',
+    fast: '150ms ease-in-out',
+    normal: '250ms ease-in-out',
+    slow: '350ms ease-in-out',
   },
-
+  
   borderRadius: {
-    none: '0',
-    sm: '0.125rem',    // 2px
-    base: '0.25rem',   // 4px
-    md: '0.375rem',    // 6px
-    lg: '0.5rem',      // 8px
-    xl: '0.75rem',     // 12px
-    '2xl': '1rem',     // 16px
-    '3xl': '1.5rem',   // 24px
+    sm: '4px',
+    base: '6px',
+    md: '8px',
+    lg: '12px',
+    xl: '16px',
     full: '9999px',
+  },
+  
+  container: {
+    maxWidth: '1200px',
+    padding: '1rem',
   },
 
   zIndex: {
-    base: 0,
-    dropdown: 1000,
-    sticky: 1020,
-    fixed: 1030,
-    modalBackdrop: 1040,
-    modal: 1050,
-    popover: 1060,
-    tooltip: 1070,
+    base: 1,
+    dropdown: 100,
+    sticky: 1000,
+    overlay: 2000,
+    modal: 3000,
+    tooltip: 4000,
   },
 } as const;
 

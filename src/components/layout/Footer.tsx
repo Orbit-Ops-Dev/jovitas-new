@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 // TODO: Update contact information with actual business details
 // TODO: Update social media links
@@ -25,8 +26,35 @@ const FooterGrid = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing.xl};
+    display: none;
+  }
+`;
+
+const MobileFooterNav = styled.nav`
+  display: none;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: ${({ theme }) => theme.spacing.xs};
+    margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+    flex-wrap: nowrap;
+  }
+`;
+
+const MobileFooterLink = styled(Link)<{ $isActive: boolean }>`
+  color: ${({ theme, $isActive }) => $isActive ? theme.colors.primary : theme.colors.gray300};
+  text-decoration: none;
+  transition: color ${({ theme }) => theme.transitions.fast};
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  font-weight: ${({ $isActive }) => $isActive ? '600' : '400'};
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.xs};
+  border-bottom: 3px solid ${({ theme, $isActive }) => $isActive ? theme.colors.primary : 'transparent'};
+  white-space: nowrap;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.white};
   }
 `;
 
@@ -66,11 +94,20 @@ const SocialLinks = styled.div`
 
 const SocialLink = styled.a`
   color: ${({ theme }) => theme.colors.gray300};
-  font-size: ${({ theme }) => theme.typography.fontSize.xl};
-  transition: color ${({ theme }) => theme.transitions.fast};
+  font-size: ${({ theme }) => theme.typography.fontSize['2xl']};
+  transition: all ${({ theme }) => theme.transitions.fast};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
 
   &:hover {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.primary};
+    transform: translateY(-3px);
   }
 `;
 
@@ -88,10 +125,32 @@ const Copyright = styled.p`
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+
+  const pageLinks = [
+    { path: '/', label: 'Home' },
+    { path: '/about', label: 'About' },
+    { path: '/services', label: 'Services' },
+    { path: '/contact', label: 'Contact' },
+  ];
 
   return (
     <FooterWrapper>
       <FooterContainer>
+        {/* Mobile-only navigation */}
+        <MobileFooterNav>
+          {pageLinks.map((link) => (
+            <MobileFooterLink
+              key={link.path}
+              to={link.path}
+              $isActive={location.pathname === link.path}
+            >
+              {link.label}
+            </MobileFooterLink>
+          ))}
+        </MobileFooterNav>
+
+        {/* Desktop footer grid */}
         <FooterGrid>
           {/* Company Info */}
           <FooterColumn>
@@ -107,21 +166,22 @@ const Footer: React.FC = () => {
           {/* Quick Links */}
           <FooterColumn>
             <FooterTitle>Quick Links</FooterTitle>
-            <FooterLink to="/services">Services</FooterLink>
-            <FooterLink to="/gallery">Gallery</FooterLink>
-            <FooterLink to="/testimonials">Testimonials</FooterLink>
             <FooterLink to="/about">About Us</FooterLink>
-            <FooterLink to="/faq">FAQ</FooterLink>
+            <FooterLink to="/services">Services</FooterLink>
+            <FooterLink to="/contact">Contact</FooterLink>
+            <FooterLink to="/about#testimonials">Testimonials</FooterLink>
+            <FooterLink to="/about#faq">FAQ</FooterLink>
           </FooterColumn>
 
           {/* Services */}
           <FooterColumn>
             <FooterTitle>Our Services</FooterTitle>
-            <FooterText>Residential Cleaning</FooterText>
-            <FooterText>Commercial Cleaning</FooterText>
-            <FooterText>Deep Cleaning</FooterText>
-            <FooterText>Move In/Out Cleaning</FooterText>
-            <FooterText>Specialized Services</FooterText>
+            <FooterLink to="/services#house-cleaning">House Cleaning</FooterLink>
+            <FooterLink to="/services#apartment-cleaning">Apartment Cleaning</FooterLink>
+            <FooterLink to="/services#office-cleaning">Office Cleaning</FooterLink>
+            <FooterLink to="/services#deep-cleaning">Deep Cleaning</FooterLink>
+            <FooterLink to="/services#post-construction-cleaning">Post Construction</FooterLink>
+            <FooterLink to="/services#after-party-cleaning">After Party Cleaning</FooterLink>
           </FooterColumn>
 
           {/* Social & Newsletter */}
@@ -129,17 +189,14 @@ const Footer: React.FC = () => {
             <FooterTitle>Connect With Us</FooterTitle>
             <SocialLinks>
               {/* TODO: Add actual social media links */}
-              <SocialLink href="#" aria-label="Facebook">
-                FB
+              <SocialLink href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <FaFacebookF />
               </SocialLink>
-              <SocialLink href="#" aria-label="Instagram">
-                IG
+              <SocialLink href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <FaInstagram />
               </SocialLink>
-              <SocialLink href="#" aria-label="Twitter">
-                TW
-              </SocialLink>
-              <SocialLink href="#" aria-label="LinkedIn">
-                LI
+              <SocialLink href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <FaWhatsapp />
               </SocialLink>
             </SocialLinks>
             <FooterText>

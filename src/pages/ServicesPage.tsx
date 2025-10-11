@@ -1,17 +1,84 @@
-import React from 'react';
 import Section from '../components/ui/Section';
 import Container from '../components/ui/Container';
+import HeroSection from '../components/common/HeroSection';
+import ServiceCard from '../components/services/ServiceCard';
+import ServiceAreaMap from '../components/ui/ServiceAreaMap';
 import SectionTitle from '../components/ui/SectionTitle';
+import { servicesDetailed } from '../data/services';
+import {
+  IntroText,
+  ServicesGrid,
+  AdditionalServicesGrid,
+  AdditionalService,
+  AdditionalServiceTitle,
+  AdditionalServiceText,
+  MapTitle,
+} from '../styles/pages/ServicesPageStyles';
 
-const ServicesPage: React.FC = () => {
+const ServicesPage = () => {
   return (
     <>
-      {/* TODO: Add hero section */}
+      {/* Hero Section */}
+      <HeroSection
+        title="Our Cleaning Services"
+        subtitle="Professional cleaning solutions for every space and situation"
+      />
+
+      {/* Services List */}
+      <Section variant="secondary">
+        <Container>
+          <IntroText>
+            Whether you need regular maintenance or a one-time deep clean, Liria's Cleaning
+            Service has the expertise and equipment to deliver exceptional results. All services
+            are customizable to meet your specific needs.
+          </IntroText>
+
+          <ServicesGrid>
+            {servicesDetailed.map((service) => (
+              <ServiceCard key={service.id} service={service} />
+            ))}
+          </ServicesGrid>
+        </Container>
+      </Section>
+
+      {/* Additional Services */}
       <Section>
         <Container>
-          <SectionTitle>Our Services</SectionTitle>
-          {/* TODO: Add service cards and descriptions */}
-          <p>Content Coming Soon</p>
+          <SectionTitle>Additional Services</SectionTitle>
+          <AdditionalServicesGrid>
+            <AdditionalService>
+              <AdditionalServiceTitle>Condo Cleaning</AdditionalServiceTitle>
+              <AdditionalServiceText>
+                Specialized cleaning for condominium units with attention to detail.
+              </AdditionalServiceText>
+            </AdditionalService>
+            <AdditionalService>
+              <AdditionalServiceTitle>Summer Housekeeping</AdditionalServiceTitle>
+              <AdditionalServiceText>
+                Seasonal deep cleaning and maintenance for summer properties.
+              </AdditionalServiceText>
+            </AdditionalService>
+            <AdditionalService>
+              <AdditionalServiceTitle>Commercial Cleaning</AdditionalServiceTitle>
+              <AdditionalServiceText>
+                Comprehensive cleaning solutions for businesses of all sizes.
+              </AdditionalServiceText>
+            </AdditionalService>
+            <AdditionalService>
+              <AdditionalServiceTitle>Residential Cleaning</AdditionalServiceTitle>
+              <AdditionalServiceText>
+                Regular or one-time cleaning services for all residential properties.
+              </AdditionalServiceText>
+            </AdditionalService>
+          </AdditionalServicesGrid>
+        </Container>
+      </Section>
+
+      {/* Service Areas */}
+      <Section variant="secondary">
+        <Container>
+          <MapTitle>Our Service Area</MapTitle>
+          <ServiceAreaMap />
         </Container>
       </Section>
     </>

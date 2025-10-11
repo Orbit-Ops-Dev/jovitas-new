@@ -1,96 +1,88 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-// TODO: Update navigation items with actual business pages
-// TODO: Replace logo placeholder with actual logo
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
-interface NavItem {
-  label: string;
-  path: string;
-}
+  const navItems = [
+    { label: 'Home', path: '/' },
+    { label: 'Services', path: '/services' },
+    { label: 'About', path: '/about' },
+    { label: 'Contact', path: '/contact' },
+  ];
 
-const navItems: NavItem[] = [
-  { label: 'Home', path: '/' },
-  { label: 'Services', path: '/services' },
-  { label: 'Gallery', path: '/gallery' },
-  { label: 'Testimonials', path: '/testimonials' },
-  { label: 'About', path: '/about' },
-  { label: 'FAQ', path: '/faq' },
-];
+  return (
+    <Nav>
+      <NavContainer>
+        <Logo to="/">
+          <LogoText>Liria's Cleaning Service</LogoText>
+        </Logo>
+
+        <HamburgerButton onClick={() => setIsMenuOpen(!isMenuOpen)} $isOpen={isMenuOpen}>
+          <span />
+          <span />
+          <span />
+        </HamburgerButton>
+
+        <NavMenu $isOpen={isMenuOpen}>
+          {navItems.map((item) => (
+            <NavItem key={item.path}>
+              <NavLink
+                to={item.path}
+                $isActive={location.pathname === item.path}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </NavLink>
+            </NavItem>
+          ))}
+          <NavItem>
+            <CallButton href="tel:+16316054192">
+              Call Us: (631) 605-4192
+            </CallButton>
+          </NavItem>
+        </NavMenu>
+      </NavContainer>
+    </Nav>
+  );
+};
 
 const Nav = styled.nav`
   position: sticky;
   top: 0;
-  width: 100%;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadows.md};
-  z-index: ${({ theme }) => theme.zIndex.sticky};
-  transition: all ${({ theme }) => theme.transitions.normal};
+  z-index: 1000;
 `;
 
 const NavContainer = styled.div`
-  max-width: 1200px;
+  max-width: ${({ theme }) => theme.container.maxWidth};
   margin: 0 auto;
-  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.xl};
+  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
   display: flex;
-  align-items: center;
   justify-content: space-between;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: ${({ theme }) => theme.spacing.md};
-  }
+  align-items: center;
 `;
 
 const Logo = styled(Link)`
-  font-size: ${({ theme }) => theme.typography.fontSize['2xl']};
+  text-decoration: none;
+`;
+
+const LogoText = styled.h1`
+  font-family: ${({ theme }) => theme.typography.fontFamily.heading};
+  font-size: ${({ theme }) => theme.typography.fontSize.xl};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   color: ${({ theme }) => theme.colors.primary};
-  text-decoration: none;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.primaryDark};
-  }
-`;
-
-const NavLinks = styled.ul<{ $isOpen: boolean }>`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing.xl};
-  align-items: center;
-  list-style: none;
+  margin: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    background-color: ${({ theme }) => theme.colors.white};
-    padding: ${({ theme }) => theme.spacing.xl};
-    box-shadow: ${({ theme }) => theme.shadows.lg};
-    transform: ${({ $isOpen }) => $isOpen ? 'translateY(0)' : 'translateY(-200%)'};
-    opacity: ${({ $isOpen }) => $isOpen ? '1' : '0'};
-    transition: all ${({ theme }) => theme.transitions.normal};
-    gap: ${({ theme }) => theme.spacing.lg};
+    font-size: ${({ theme }) => theme.typography.fontSize.lg};
   }
 `;
 
-const NavLink = styled(Link)`
-  color: ${({ theme }) => theme.colors.textPrimary};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
-  text-decoration: none;
-  transition: color ${({ theme }) => theme.transitions.fast};
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary};
-  }
-
-  &.active {
-    color: ${({ theme }) => theme.colors.primary};
-  }
-`;
-
-const HamburgerButton = styled.button`
+const HamburgerButton = styled.button<{ $isOpen: boolean }>`
   display: none;
   flex-direction: column;
   gap: 4px;
@@ -98,49 +90,104 @@ const HamburgerButton = styled.button`
   border: none;
   cursor: pointer;
   padding: ${({ theme }) => theme.spacing.sm};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    display: flex;
-  }
+  position: relative;
+  width: 35px;
+  height: 30px;
 
   span {
     width: 25px;
     height: 3px;
-    background-color: ${({ theme }) => theme.colors.textPrimary};
-    transition: all ${({ theme }) => theme.transitions.fast};
+    background-color: ${({ theme }) => theme.colors.dark};
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    left: 5px;
+    transform-origin: center;
+
+    &:nth-child(1) {
+      top: ${({ $isOpen }) => ($isOpen ? '13px' : '6px')};
+      transform: ${({ $isOpen }) => ($isOpen ? 'rotate(45deg)' : 'rotate(0)')};
+    }
+
+    &:nth-child(2) {
+      top: 13px;
+      opacity: ${({ $isOpen }) => ($isOpen ? '0' : '1')};
+    }
+
+    &:nth-child(3) {
+      top: ${({ $isOpen }) => ($isOpen ? '13px' : '20px')};
+      transform: ${({ $isOpen }) => ($isOpen ? 'rotate(-45deg)' : 'rotate(0)')};
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    display: flex;
   }
 `;
 
-const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const NavMenu = styled.ul<{ $isOpen: boolean }>`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.xl};
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: ${({ theme }) => theme.colors.white};
+    box-shadow: ${({ $isOpen }) => ($isOpen ? '0 4px 6px rgba(0, 0, 0, 0.1)' : 'none')};
+    padding: ${({ $isOpen, theme }) => ($isOpen ? theme.spacing.lg : '0')};
+    gap: ${({ theme }) => theme.spacing.md};
+    max-height: ${({ $isOpen }) => ($isOpen ? '500px' : '0')};
+    overflow: hidden;
+    opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
+    visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, padding 0.3s ease-in-out;
+  }
+`;
 
-  return (
-    <Nav>
-      <NavContainer>
-        <Logo to="/">Liria</Logo>
+const NavItem = styled.li``;
 
-        <HamburgerButton onClick={toggleMenu} aria-label="Toggle menu">
-          <span />
-          <span />
-          <span />
-        </HamburgerButton>
+const NavLink = styled(Link)<{ $isActive: boolean }>`
+  text-decoration: none;
+  color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colors.primary : theme.colors.dark};
+  font-weight: ${({ $isActive, theme }) =>
+    $isActive ? theme.typography.fontWeight.semibold : theme.typography.fontWeight.regular};
+  font-size: ${({ theme }) => theme.typography.fontSize.base};
+  transition: ${({ theme }) => theme.transitions.fast};
 
-        <NavLinks $isOpen={isOpen}>
-          {navItems.map((item) => (
-            <li key={item.path}>
-              <NavLink to={item.path} onClick={() => setIsOpen(false)}>
-                {item.label}
-              </NavLink>
-            </li>
-          ))}
-        </NavLinks>
-      </NavContainer>
-    </Nav>
-  );
-};
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary};
+  }
+`;
+
+const CallButton = styled.a`
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
+  border-radius: ${({ theme }) => theme.borderRadius.sm};
+  text-decoration: none;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  transition: ${({ theme }) => theme.transitions.fast};
+  white-space: nowrap;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primaryDark};
+    color: ${({ theme }) => theme.colors.white};
+    transform: translateY(-2px);
+    box-shadow: ${({ theme }) => theme.shadows.md};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: 100%;
+    text-align: center;
+  }
+`;
 
 export default Navbar;
