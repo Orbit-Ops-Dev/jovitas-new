@@ -1,19 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import GlobalStyles from './styles/globalStyles';
+import Navbar from './components/common/navbar/internals';
+import Footer from './components/common/footer/internals';
 
-// Layout components
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
-
-// Pages
-import HomePage from './pages/HomePage';
-import ServicesPage from './pages/ServicesPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import NotFoundPage from './pages/NotFoundPage';
+// Lazy load page components for better code splitting
+const HomePage = lazy(() => import('./components/pages/home/internals'));
+const ServicesPage = lazy(() => import('./components/pages/services/internals'));
+const AboutPage = lazy(() => import('./components/pages/about/internals'));
+const ContactPage = lazy(() => import('./components/pages/contact/internals'));
+const NotFoundPage = lazy(() => import('./components/common/not-found/internals'));
 
 // Component to handle scrolling to hash fragments
 const ScrollToHashElement: React.FC = () => {
@@ -47,13 +45,15 @@ const App: React.FC = () => {
       <Router>
         <ScrollToHashElement />
         <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
         <Footer />
       </Router>
     </ThemeProvider>
