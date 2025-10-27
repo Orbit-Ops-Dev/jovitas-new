@@ -1,16 +1,7 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import {
-  Nav,
-  NavContainer,
-  Logo,
-  LogoText,
-  HamburgerButton,
-  NavMenu,
-  NavItem,
-  NavLink,
-  CallButton,
-} from './styled';
+import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { Nav, NavContainer, Logo, LogoText, HamburgerButton, NavMenu, NavItem, NavLink, SocialLinks, SocialLink } from './styled';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,13 +18,10 @@ const Navbar = () => {
     <Nav>
       <NavContainer>
         <Logo to="/">
-          <LogoText>Liria's Cleaning Service</LogoText>
+          <LogoText>JCS</LogoText>
         </Logo>
 
-        <HamburgerButton
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          $isOpen={isMenuOpen}
-        >
+        <HamburgerButton onClick={() => setIsMenuOpen(!isMenuOpen)} $isOpen={isMenuOpen}>
           <span />
           <span />
           <span />
@@ -42,21 +30,39 @@ const Navbar = () => {
         <NavMenu $isOpen={isMenuOpen}>
           {navItems.map(item => (
             <NavItem key={item.path}>
-              <NavLink
-                to={item.path}
-                $isActive={location.pathname === item.path}
-                onClick={() => setIsMenuOpen(false)}
-              >
+              <NavLink to={item.path} $isActive={location.pathname === item.path} onClick={() => setIsMenuOpen(false)}>
                 {item.label}
               </NavLink>
             </NavItem>
           ))}
-          <NavItem>
-            <CallButton href="tel:+16316054192">
-              Call Us: (631) 605-4192
-            </CallButton>
-          </NavItem>
         </NavMenu>
+
+        <SocialLinks>
+          <SocialLink
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <FaFacebookF />
+          </SocialLink>
+          <SocialLink
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <FaInstagram />
+          </SocialLink>
+          <SocialLink
+            href="https://wa.me/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+          >
+            <FaWhatsapp />
+          </SocialLink>
+        </SocialLinks>
       </NavContainer>
     </Nav>
   );

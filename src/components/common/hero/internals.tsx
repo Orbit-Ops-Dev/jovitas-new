@@ -17,6 +17,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   variant = 'default',
   videoSrc,
   children,
+  centered,
 }) => {
   return (
     <Hero>
@@ -29,7 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <HeroOverlay $hasVideo={variant === 'video'} />
       <HeroContent>
         <Container>
-          <HeroTextContainer $centered={variant !== 'video'}>
+          <HeroTextContainer $centered={centered ?? variant !== 'video'}>
             <HeroTitle>{title}</HeroTitle>
             {subtitle && <HeroSubtitle>{subtitle}</HeroSubtitle>}
             {children}

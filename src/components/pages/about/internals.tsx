@@ -1,11 +1,9 @@
 import Section from '../../common/section/Section';
 import Container from '../../common/container/internals';
 import HeroSection from '../../common/hero/internals';
-import TestimonialCard from './testimonials/internals';
 import FAQAccordion from './faq/internals';
 import SectionTitle from '../../common/section/SectionTitle';
 import { faqs } from './faq/data';
-import { testimonials } from './testimonials/data';
 import {
   ContentWrapper,
   ContentSection,
@@ -17,8 +15,10 @@ import {
   FeatureContent,
   FeatureTitle,
   FeatureText,
-  TestimonialsGrid,
 } from './styled';
+import { Button } from '@material-tailwind/react';
+import { Link } from 'react-router-dom';
+import { AboutGrid, AboutContent, AboutTitle, AboutText, AboutFeatures, Feature, AboutImage } from '../home/styled';
 
 const AboutPage = () => {
   return (
@@ -28,24 +28,38 @@ const AboutPage = () => {
         subtitle="Professional, reliable, and trustworthy cleaning services"
       />
 
+      {/* About Preview */}
+      <Section variant="light">
+        <Container>
+          <AboutGrid>
+            <AboutContent>
+              <AboutTitle>A Short Story About Us</AboutTitle>
+              <AboutText>
+                With years of experience serving Suffolk County, Liria's Cleaning Service has built a reputation for
+                reliability, professionalism, and exceptional results. We understand that your time is valuable, which
+                is why we offer flexible scheduling and deliver consistently excellent service.
+              </AboutText>
+              <AboutFeatures>
+                <Feature>✓ Professional & Certified Team</Feature>
+                <Feature>✓ Flexible Scheduling</Feature>
+                <Feature>✓ Eco-Friendly Products</Feature>
+                <Feature>✓ 100% Satisfaction Guaranteed</Feature>
+              </AboutFeatures>
+              <Link to="/about">
+                <Button variant="primary">Learn More About Us</Button>
+              </Link>
+            </AboutContent>
+            <AboutImage
+              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
+              alt="Professional cleaning team at work"
+              loading="lazy"
+            />
+          </AboutGrid>
+        </Container>
+      </Section>
+
       <Section variant="secondary">
         <Container>
-          {/* Our Story Section */}
-          <ContentSection>
-            <TextContent>
-              <SectionTitle>Our Story</SectionTitle>
-              <Text>
-                Liria's Cleaning Service has been serving Suffolk County with dedication and professionalism. We
-                understand that your home or business is important to you, and we treat every space with the care and
-                attention it deserves.
-              </Text>
-              <Text>
-                Our commitment to excellence and customer satisfaction has made us a trusted name in residential and
-                commercial cleaning throughout the Bellport, NY area.
-              </Text>
-            </TextContent>
-          </ContentSection>
-
           {/* Why Choose Us Section */}
           <ContentSection>
             <TextContent>
@@ -103,18 +117,6 @@ const AboutPage = () => {
               </Text>
             </TextContent>
           </ContentSection>
-        </Container>
-      </Section>
-
-      {/* What Our Clients Say Section */}
-      <Section id="testimonials">
-        <Container>
-          <SectionTitle align="center">What Our Clients Say About Us</SectionTitle>
-          <TestimonialsGrid>
-            {testimonials.map(testimonial => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-            ))}
-          </TestimonialsGrid>
         </Container>
       </Section>
 

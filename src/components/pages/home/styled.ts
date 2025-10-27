@@ -5,6 +5,7 @@ export const HeroButtons = styled.div`
   display: flex;
   gap: ${({ theme }) => theme.spacing.lg};
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 // Section Header Styles

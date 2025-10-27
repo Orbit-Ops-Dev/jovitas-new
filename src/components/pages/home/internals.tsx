@@ -21,38 +21,49 @@ import {
   Feature,
   AboutImage,
 } from './styled.ts';
+import { TestimonialsGrid } from '../about/styled.ts';
+import { testimonials } from './testimonials/data.ts';
+import TestimonialCard from './testimonials/internals.tsx';
 
 const HomePage = () => {
   return (
     <>
       {/* Hero Section */}
       <HeroSection
-        title="Professional Cleaning Services in Suffolk County"
-        subtitle="Reliable, trustworthy, and exceptional cleaning for your home or business"
+        title="Exceptional Cleaning Services for Every Need"
+        subtitle="Experience top-quality residential and commercial cleaning tailored to your requirements."
         variant="video"
         videoSrc="https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4"
+        centered={true}
       >
         <HeroButtons>
-          <Link to="/contact">
-            <Button variant="primary" size="large">
-              Get Free Quote
-            </Button>
-          </Link>
           <Link to="/services">
-            <Button variant="outline" size="large">
-              Our Services
+            <Button variant="primary" size="large">
+              Contact
             </Button>
           </Link>
         </HeroButtons>
       </HeroSection>
 
+      {/* What Our Clients Say Section */}
+      <Section id="testimonials">
+        <Container>
+          <SectionTitle align="center">What Our Clients Say About Us</SectionTitle>
+          <TestimonialsGrid>
+            {testimonials.map(testimonial => (
+              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+            ))}
+          </TestimonialsGrid>
+        </Container>
+      </Section>
+
       {/* Services Carousel */}
       <Section variant="secondary">
         <Container>
           <SectionHeader>
-            <SectionTitle>The Liria's Experience</SectionTitle>
+            <SectionTitle>Exceptional Care In Every Service</SectionTitle>
             <SectionDescription>
-              From residential to commercial, we provide comprehensive cleaning solutions
+              Top-tier cleaning for homes, offices, and post-construction areas, expertly handled by our team
             </SectionDescription>
           </SectionHeader>
 
@@ -69,36 +80,6 @@ const HomePage = () => {
               <Button variant="primary">View All Services</Button>
             </Link>
           </CTAContainer>
-        </Container>
-      </Section>
-
-      {/* About Preview */}
-      <Section variant="light">
-        <Container>
-          <AboutGrid>
-            <AboutContent>
-              <AboutTitle>Why Choose Liria's Cleaning Service?</AboutTitle>
-              <AboutText>
-                With years of experience serving Suffolk County, Liria's Cleaning Service has built a reputation for
-                reliability, professionalism, and exceptional results. We understand that your time is valuable, which
-                is why we offer flexible scheduling and deliver consistently excellent service.
-              </AboutText>
-              <AboutFeatures>
-                <Feature>✓ Professional & Certified Team</Feature>
-                <Feature>✓ Flexible Scheduling</Feature>
-                <Feature>✓ Eco-Friendly Products</Feature>
-                <Feature>✓ 100% Satisfaction Guaranteed</Feature>
-              </AboutFeatures>
-              <Link to="/about">
-                <Button variant="primary">Learn More About Us</Button>
-              </Link>
-            </AboutContent>
-            <AboutImage
-              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
-              alt="Professional cleaning team at work"
-              loading="lazy"
-            />
-          </AboutGrid>
         </Container>
       </Section>
     </>

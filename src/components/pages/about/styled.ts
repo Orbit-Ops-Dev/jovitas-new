@@ -72,12 +72,36 @@ export const FeatureText = styled.p`
 
 // Testimonials Grid
 export const TestimonialsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: ${({ theme }) => theme.spacing['2xl']};
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${({ theme }) => theme.spacing.xl};
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  justify-content: center;
 
+  /* Desktop: max 3 per row, items are equal width */
+  & > * {
+    flex: 1 1 calc(33.333% - ${({ theme }) => theme.spacing.xl});
+    max-width: calc(33.333% - ${({ theme }) => theme.spacing.xl});
+    min-width: 300px;
+  }
+
+  /* Tablet: 2 columns */
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    & > * {
+      flex: 1 1 calc(50% - ${({ theme }) => theme.spacing.xl});
+      max-width: calc(50% - ${({ theme }) => theme.spacing.xl});
+      min-width: 280px;
+    }
+  }
+
+  /* Mobile: 1 column */
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing.lg};
+
+    & > * {
+      flex: 1 1 100%;
+      max-width: 100%;
+      min-width: 100%;
+    }
   }
 `;

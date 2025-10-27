@@ -4,4 +4,5 @@ export interface HeroSectionProps {
   variant?: 'default' | 'video';
   videoSrc?: string;
   children?: React.ReactNode;
+  centered?: boolean;
 }

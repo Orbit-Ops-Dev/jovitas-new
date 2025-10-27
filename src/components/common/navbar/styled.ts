@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 export const Nav = styled.nav`
   position: sticky;
   top: 0;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.primary};
   box-shadow: ${({ theme }) => theme.shadows.md};
   z-index: 1000;
 `;
@@ -20,13 +20,14 @@ export const NavContainer = styled.div`
 
 export const Logo = styled(Link)`
   text-decoration: none;
+  flex: 1;
 `;
 
 export const LogoText = styled.h1`
   font-family: ${({ theme }) => theme.typography.fontFamily.heading};
   font-size: ${({ theme }) => theme.typography.fontSize.xl};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
   margin: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -79,10 +80,12 @@ export const HamburgerButton = styled.button<{ $isOpen: boolean }>`
 export const NavMenu = styled.ul<{ $isOpen: boolean }>`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: ${({ theme }) => theme.spacing.xl};
   list-style: none;
   margin: 0;
   padding: 0;
+  flex: 1;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     position: absolute;
@@ -90,9 +93,9 @@ export const NavMenu = styled.ul<{ $isOpen: boolean }>`
     left: 0;
     right: 0;
     flex-direction: column;
-    background-color: ${({ theme }) => theme.colors.white};
-    box-shadow: ${({ $isOpen }) =>
-      $isOpen ? '0 4px 6px rgba(0, 0, 0, 0.1)' : 'none'};
+    align-items: center;
+    background-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: ${({ $isOpen }) => ($isOpen ? '0 4px 6px rgba(0, 0, 0, 0.1)' : 'none')};
     padding: ${({ $isOpen, theme }) => ($isOpen ? theme.spacing.lg : '0')};
     gap: ${({ theme }) => theme.spacing.md};
     max-height: ${({ $isOpen }) => ($isOpen ? '500px' : '0')};
@@ -111,40 +114,48 @@ export const NavItem = styled.li``;
 
 export const NavLink = styled(Link)<{ $isActive: boolean }>`
   text-decoration: none;
-  color: ${({ $isActive, theme }) =>
-    $isActive ? theme.colors.primary : theme.colors.dark};
+  color: ${({ theme }) => theme.colors.white};
   font-weight: ${({ $isActive, theme }) =>
-    $isActive
-      ? theme.typography.fontWeight.semibold
-      : theme.typography.fontWeight.regular};
+    $isActive ? theme.typography.fontWeight.semibold : theme.typography.fontWeight.regular};
   font-size: ${({ theme }) => theme.typography.fontSize.base};
   transition: ${({ theme }) => theme.transitions.fast};
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+  border-radius: ${({ theme }) => theme.borderRadius.sm};
+  background-color: ${({ $isActive }) => ($isActive ? 'rgba(255, 255, 255, 0.1)' : 'transparent')};
 
   &:hover {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.white};
+    background-color: rgba(255, 255, 255, 0.1);
   }
 `;
 
-export const CallButton = styled.a`
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.white};
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
-  border-radius: ${({ theme }) => theme.borderRadius.sm};
-  text-decoration: none;
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  transition: ${({ theme }) => theme.transitions.fast};
-  white-space: nowrap;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.primaryDark};
-    color: ${({ theme }) => theme.colors.white};
-    transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.shadows.md};
-  }
+export const SocialLinks = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: ${({ theme }) => theme.spacing.md};
+  flex: 1;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    width: 100%;
-    text-align: center;
+    display: none;
+  }
+`;
+
+export const SocialLink = styled.a`
+  color: ${({ theme }) => theme.colors.white};
+  font-size: ${({ theme }) => theme.typography.fontSize.lg};
+  transition: all ${({ theme }) => theme.transitions.fast};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.white};
+    transform: translateY(-2px);
   }
 `;

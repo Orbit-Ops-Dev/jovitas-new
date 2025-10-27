@@ -75,9 +75,19 @@ export const StyledButton = styled.button<{
         return `
             background-color: ${theme.colors.primary};
             color: ${theme.colors.white};
-  
+            position: relative;
+
             &:hover:not(:disabled) {
-              background-color: ${theme.colors.primaryDark};
+              &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: ${theme.borderRadius.md};
+              }
             }
           `;
     }

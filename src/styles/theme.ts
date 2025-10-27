@@ -1,7 +1,7 @@
 export const theme = {
   colors: {
     // Primary Brand Colors
-    primary: '#4A90A4', // Teal blue - main brand color
+    primary: '#0d1b2b', // Teal blue - main brand color
     primaryLight: '#6CB4A8', // Lighter teal - hover states
     primaryDark: '#3A7A8A', // Darker teal - pressed states
 

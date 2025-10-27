@@ -3,19 +3,19 @@ import { Service } from './types';
 export const services: Service[] = [
   {
     id: '1',
-    title: 'Commercial Cleaning',
-    description:
-      'Commercial cleaning services are not just a necessity, but a reflection of your commitment to providing a high-quality workplace. A clean and organized space can boost employee productivity and morale, while also giving your customers confidence in your business.',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop',
-    slug: 'commercial-cleaning',
-  },
-  {
-    id: '2',
     title: 'Residential Cleaning',
     description:
       'Full residential cleaning is a comprehensive service that provides a thorough cleaning of every room in your home. Our professional cleaning company can tackle even the toughest cleaning jobs to ensure that your home is sparkling clean and hygienic.',
     image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=600&fit=crop',
     slug: 'residential-cleaning',
+  },
+  {
+    id: '2',
+    title: 'Move In/Move Out Cleaning',
+    description:
+      'Comprehensive cleaning service for transitions, ensuring your old space is spotless for the next occupant and your new space is fresh and ready for move-in.',
+    image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=600&fit=crop',
+    slug: 'move-in-move-out-cleaning',
   },
   {
     id: '3',
@@ -24,62 +24,6 @@ export const services: Service[] = [
       "Post-construction cleaning is a specialized service that is designed to clean and sanitize a property after a construction project has been completed. Whether it's a newly constructed building or a renovation, we ensure that the space is safe, clean, and ready for occupancy.",
     image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop',
     slug: 'post-construction-cleaning',
-  },
-  {
-    id: '4',
-    title: 'Deep Cleaning',
-    description:
-      'Thorough, intensive cleaning that goes beyond regular maintenance to tackle hidden dirt, grime, and bacteria in every corner of your space.',
-    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop',
-    slug: 'deep-cleaning',
-  },
-  {
-    id: '5',
-    title: 'Move In/Move Out Cleaning',
-    description:
-      'Comprehensive cleaning service for transitions, ensuring your old space is spotless for the next occupant and your new space is fresh and ready for move-in.',
-    image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=600&fit=crop',
-    slug: 'move-in-move-out-cleaning',
-  },
-  {
-    id: '6',
-    title: 'Office Cleaning',
-    description:
-      'Professional office cleaning services that maintain a productive, healthy work environment for your team and create a positive impression for clients.',
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop',
-    slug: 'office-cleaning',
-  },
-  {
-    id: '7',
-    title: 'Vacation Rental Cleaning',
-    description:
-      'Vacation rental cleaning is essential for ensuring that your rental property is clean, hygienic, and welcoming for every guest.',
-    image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop',
-    slug: 'vacation-rental-cleaning',
-  },
-  {
-    id: '8',
-    title: 'Window Cleaning',
-    description:
-      'Professional window cleaning services that deliver streak-free, crystal-clear windows for both residential and commercial properties.',
-    image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=800&h=600&fit=crop',
-    slug: 'window-cleaning',
-  },
-  {
-    id: '9',
-    title: 'Carpet Cleaning',
-    description:
-      'Deep carpet cleaning that removes stains, allergens, and embedded dirt to restore your carpets to like-new condition.',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop',
-    slug: 'carpet-cleaning',
-  },
-  {
-    id: '10',
-    title: 'Pressure Washing',
-    description:
-      'High-powered exterior cleaning that removes dirt, mold, and grime from driveways, walkways, siding, and outdoor surfaces.',
-    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop',
-    slug: 'pressure-washing',
   },
 ];
 
