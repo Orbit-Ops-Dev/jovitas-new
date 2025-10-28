@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // Hero Section Styles
 export const HeroButtons = styled.div`
@@ -6,6 +7,15 @@ export const HeroButtons = styled.div`
   gap: ${({ theme }) => theme.spacing.lg};
   flex-wrap: wrap;
   justify-content: center;
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 // Section Header Styles

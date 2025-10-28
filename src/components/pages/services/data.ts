@@ -5,7 +5,7 @@ export const services: Service[] = [
     id: '1',
     title: 'Residential Cleaning',
     description:
-      'Full residential cleaning is a comprehensive service that provides a thorough cleaning of every room in your home. Our professional cleaning company can tackle even the toughest cleaning jobs to ensure that your home is sparkling clean and hygienic.',
+      'We provide comprehensive residential cleaning or home cleaning services designed to keep your home spotless, fresh, and inviting. From regular maintenance to deep cleaning, our professional team ensures every corner is cleaned with care and attention to detail.',
     image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=600&fit=crop',
     slug: 'residential-cleaning',
   },
@@ -13,7 +13,7 @@ export const services: Service[] = [
     id: '2',
     title: 'Move In/Move Out Cleaning',
     description:
-      'Comprehensive cleaning service for transitions, ensuring your old space is spotless for the next occupant and your new space is fresh and ready for move-in.',
+      'Our Move-In and Move-Out cleaning services ensure your home is ready for its next chapter. Whether you’re settling in or moving out, we provide a deep clean, leaving every room spotless and ready for new memories.',
     image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=600&fit=crop',
     slug: 'move-in-move-out-cleaning',
   },
@@ -21,8 +21,7 @@ export const services: Service[] = [
     id: '3',
     title: 'Post Construction Cleaning',
     description:
-      "Post-construction cleaning is a specialized service that is designed to clean and sanitize a property after a construction project has been completed. Whether it's a newly constructed building or a renovation, we ensure that the space is safe, clean, and ready for occupancy.",
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop',
+      'Our Post Construction Cleaning services ensure your newly constructed or renovated space is move-in ready. We meticulously clean every corner, removing dust, debris, and construction residue to reveal a polished, pristine environment.',
     slug: 'post-construction-cleaning',
   },
 ];
@@ -31,11 +30,12 @@ export const services: Service[] = [
 export const servicesDetailed: Service[] = [
   {
     id: '1',
-    title: 'House Cleaning',
-    description: 'Complete residential cleaning services to keep your home spotless and healthy.',
+    title: 'Residential Cleaning',
+    description:
+      'We provide comprehensive residential cleaning or home cleaning services designed to keep your home spotless, fresh, and inviting. From regular maintenance to deep cleaning, our professional team ensures every corner is cleaned with care and attention to detail.',
     features: ['Living areas', 'Bedrooms', 'Kitchens', 'Bathrooms', 'Dusting & vacuuming'],
     image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=600&fit=crop',
-    slug: 'house-cleaning',
+    slug: 'residential-cleaning',
     gallery: [
       'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=600&fit=crop',
@@ -45,50 +45,24 @@ export const servicesDetailed: Service[] = [
   },
   {
     id: '2',
-    title: 'Apartment Cleaning',
-    description: 'Specialized cleaning for apartments, condos, and smaller living spaces.',
-    features: ['All rooms', 'Kitchen deep clean', 'Bathroom sanitization', 'Floor care'],
-    image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop',
-    slug: 'apartment-cleaning',
+    title: 'Move In/Move Out Cleaning',
+    description:
+      "Our Move-In and Move-Out cleaning services ensure your home is ready for its next chapter. Whether you're settling in or moving out, we provide a deep clean, leaving every room spotless and ready for new memories.",
+    features: ['Deep cleaning', 'Kitchen sanitization', 'Bathroom disinfection', 'Floor care', 'Window cleaning'],
+    image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=600&fit=crop',
+    slug: 'move-in-move-out-cleaning',
     gallery: [
+      'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop',
     ],
   },
   {
     id: '3',
-    title: 'Office Cleaning',
-    description: 'Professional commercial cleaning to maintain a productive workspace.',
-    features: ['Workstations', 'Conference rooms', 'Break rooms', 'Restrooms', 'Common areas'],
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop',
-    slug: 'office-cleaning',
-    gallery: [
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop',
-    ],
-  },
-  {
-    id: '4',
-    title: 'Deep Cleaning',
-    description: 'Thorough, intensive cleaning for spaces that need extra attention.',
-    features: ['Baseboards', 'Window tracks', 'Behind appliances', 'Detailed sanitization'],
-    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop',
-    slug: 'deep-cleaning',
-    gallery: [
-      'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1563453392212-326f5e854473?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1585421514738-01798e348b17?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=800&h=600&fit=crop',
-    ],
-  },
-  {
-    id: '5',
     title: 'Post Construction Cleaning',
-    description: 'Remove construction dust and debris after renovations or new builds.',
+    description:
+      'Our Post Construction Cleaning services ensure your newly constructed or renovated space is move-in ready. We meticulously clean every corner, removing dust, debris, and construction residue to reveal a polished, pristine environment.',
     features: ['Dust removal', 'Paint splatter cleanup', 'Floor polishing', 'Window cleaning'],
     image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop',
     slug: 'post-construction-cleaning',
@@ -97,20 +71,6 @@ export const servicesDetailed: Service[] = [
       'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop',
-    ],
-  },
-  {
-    id: '6',
-    title: 'After Party Cleaning',
-    description: 'Quick and efficient cleanup after events and gatherings.',
-    features: ['Trash removal', 'Surface cleaning', 'Floor care', 'Kitchen cleanup'],
-    image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=600&fit=crop',
-    slug: 'after-party-cleaning',
-    gallery: [
-      'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1464207687429-7505649dae38?w=800&h=600&fit=crop',
     ],
   },
 ];

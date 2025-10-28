@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Section from '../../common/section/Section.tsx';
 import Container from '../../common/container/internals.tsx';
 import Button from '../../common/button/internals.tsx';
@@ -7,21 +6,7 @@ import ServicePreviewCard from './service-preview/internals.tsx';
 import HeroSection from '../../common/hero/internals.tsx';
 import SectionTitle from '../../common/section/SectionTitle.tsx';
 import { services } from '../services/data.ts';
-import {
-  HeroButtons,
-  SectionHeader,
-  SectionDescription,
-  CarouselWrapper,
-  CTAContainer,
-  AboutGrid,
-  AboutContent,
-  AboutTitle,
-  AboutText,
-  AboutFeatures,
-  Feature,
-  AboutImage,
-} from './styled.ts';
-import { TestimonialsGrid } from '../about/styled.ts';
+import { HeroButtons, StyledLink, SectionHeader, SectionDescription, CarouselWrapper, CTAContainer } from './styled.ts';
 import { testimonials } from './testimonials/data.ts';
 import TestimonialCard from './testimonials/internals.tsx';
 
@@ -37,11 +22,11 @@ const HomePage = () => {
         centered={true}
       >
         <HeroButtons>
-          <Link to="/services">
+          <StyledLink to="/contact">
             <Button variant="primary" size="large">
               Contact
             </Button>
-          </Link>
+          </StyledLink>
         </HeroButtons>
       </HeroSection>
 
@@ -49,11 +34,21 @@ const HomePage = () => {
       <Section id="testimonials">
         <Container>
           <SectionTitle align="center">What Our Clients Say About Us</SectionTitle>
-          <TestimonialsGrid>
-            {testimonials.map(testimonial => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-            ))}
-          </TestimonialsGrid>
+          <CarouselWrapper>
+            <Carousel
+              itemsPerView={3}
+              gap={24}
+              autoPlay={true}
+              autoPlayInterval={5000}
+              showDots={true}
+              showArrows={true}
+              infinite={true}
+            >
+              {testimonials.map(testimonial => (
+                <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+              ))}
+            </Carousel>
+          </CarouselWrapper>
         </Container>
       </Section>
 
@@ -76,9 +71,9 @@ const HomePage = () => {
           </CarouselWrapper>
 
           <CTAContainer>
-            <Link to="/services">
+            <StyledLink to="/services">
               <Button variant="primary">View All Services</Button>
-            </Link>
+            </StyledLink>
           </CTAContainer>
         </Container>
       </Section>

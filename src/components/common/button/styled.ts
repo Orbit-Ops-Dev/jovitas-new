@@ -14,8 +14,14 @@ export const StyledButton = styled.button<{
   border-radius: ${({ theme }) => theme.borderRadius.md};
   transition: all ${({ theme }) => theme.transitions.fast};
   cursor: pointer;
-  border: 2px solid transparent;
+  border: none;
   width: ${({ $fullWidth }) => ($fullWidth ? '100%' : 'auto')};
+  text-decoration: none;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
 
   /* Size variants */
   ${({ $size, theme }) => {
@@ -54,7 +60,7 @@ export const StyledButton = styled.button<{
         return `
             background-color: transparent;
             color: ${theme.colors.primary};
-            border-color: ${theme.colors.primary};
+            border: 2px solid ${theme.colors.primary};
   
             &:hover:not(:disabled) {
               background-color: ${theme.colors.primary};
@@ -104,9 +110,8 @@ export const StyledButton = styled.button<{
     transform: scale(0.98);
   }
 
-  /* Focus state */
+  /* Focus state - accessible focus for keyboard navigation */
   &:focus-visible {
-    outline: 2px solid ${({ theme }) => theme.colors.primary};
-    outline-offset: 2px;
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}40;
   }
 `;
