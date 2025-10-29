@@ -16,75 +16,46 @@ export const FooterContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const FooterGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: ${({ theme }) => theme.spacing['2xl']};
+export const FooterMain = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    display: none;
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    flex-direction: column;
+    gap: ${({ theme }) => theme.spacing['2xl']};
+    align-items: center;
   }
 `;
 
-export const MobileFooterNav = styled.nav`
-  display: none;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: ${({ theme }) => theme.spacing.xs};
-    margin-bottom: ${({ theme }) => theme.spacing['2xl']};
-    flex-wrap: nowrap;
-  }
-`;
-
-export const MobileFooterLink = styled(Link)<{ $isActive: boolean }>`
-  color: ${({ theme, $isActive }) =>
-    $isActive ? theme.colors.primary : theme.colors.gray300};
-  text-decoration: none;
-  transition: color ${({ theme }) => theme.transitions.fast};
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  font-weight: ${({ $isActive }) => ($isActive ? '600' : '400')};
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.xs};
-  border-bottom: 3px solid
-    ${({ theme, $isActive }) =>
-      $isActive ? theme.colors.primary : 'transparent'};
-  white-space: nowrap;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.white};
-  }
-`;
-
-export const FooterColumn = styled.div`
+export const FooterLeft = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.md};
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.lg};
 `;
 
-export const FooterTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.fontSize.lg};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-  color: ${({ theme }) => theme.colors.white};
+export const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
-export const FooterLink = styled(Link)`
-  color: ${({ theme }) => theme.colors.gray300};
-  text-decoration: none;
-  transition: color ${({ theme }) => theme.transitions.fast};
+export const Logo = styled.div`
+  width: 60px;
+  height: 60px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: ${({ theme }) => theme.spacing.md};
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.white};
+  svg {
+    width: 40px;
+    height: 40px;
+    fill: white;
   }
-`;
-
-export const FooterText = styled.p`
-  color: ${({ theme }) => theme.colors.gray300};
-  line-height: ${({ theme }) => theme.typography.lineHeight.relaxed};
-  margin: 0;
 `;
 
 export const SocialLinks = styled.div`
@@ -109,6 +80,41 @@ export const SocialLink = styled.a`
     background-color: ${({ theme }) => theme.colors.primary};
     transform: translateY(-3px);
   }
+`;
+
+export const FooterColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: ${({ theme }) => theme.spacing.md};
+  flex: 1;
+  max-width: 200px;
+`;
+
+export const FooterTitle = styled.h3`
+  font-size: ${({ theme }) => theme.typography.fontSize.lg};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  color: ${({ theme }) => theme.colors.white};
+`;
+
+export const FooterLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.gray300};
+  text-decoration: none;
+  transition: color ${({ theme }) => theme.transitions.fast};
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;
+
+export const FooterText = styled.p`
+  color: ${({ theme }) => theme.colors.gray300};
+  line-height: ${({ theme }) => theme.typography.lineHeight.relaxed};
+  margin: 0;
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
 `;
 
 export const FooterBottom = styled.div`

@@ -7,8 +7,8 @@ export const Hero = styled.section`
   align-items: center;
   background: linear-gradient(
     135deg,
-    ${({ theme }) => theme.colors.primary} 0%,
-    ${({ theme }) => theme.colors.primaryDark} 100%
+    ${({ theme }) => theme.colors.dark} 0%,
+    ${({ theme }) => theme.colors.primary} 100%
   );
   overflow: hidden;
 

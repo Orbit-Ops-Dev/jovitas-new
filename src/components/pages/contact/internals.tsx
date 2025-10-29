@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import Section from '../../common/section/Section';
 import Container from '../../common/container/internals';
 import Button from '../../common/button/internals';
+import HeroSection from '../../common/hero/internals';
+import contactImage from '../../../assets/contact.jpg';
 import {
-  HeroSection,
-  HeroOverlay,
-  HeroContent,
-  HeroTitle,
-  HeroSubtitle,
   ContactGrid,
   ContactInfo,
   InfoTitle,
@@ -18,9 +15,8 @@ import {
   DetailTitle,
   DetailText,
   PhoneLink,
-  SocialSection,
-  SocialTitle,
-  SocialLink,
+  PhotoSection,
+  ContactPhoto,
   FormContainer,
   FormTitle,
   FormDescription,
@@ -30,8 +26,16 @@ import {
   FormGroup,
   Label,
   Input,
-  Select,
   Textarea,
+  CheckboxGroup,
+  CheckboxItem,
+  Checkbox,
+  CheckboxLabel,
+  RadioGroup,
+  RadioItem,
+  Radio,
+  RadioLabel,
+  OtherServiceInput,
 } from './styled';
 
 const ContactPage = () => {
@@ -39,7 +43,9 @@ const ContactPage = () => {
     name: '',
     email: '',
     phone: '',
-    service: '',
+    services: [] as string[],
+    otherService: '',
+    cleaningFrequency: '',
     message: '',
   });
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -52,6 +58,20 @@ const ContactPage = () => {
     }));
   };
 
+  const handleServiceChange = (service: string, checked: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      services: checked ? [...prev.services, service] : prev.services.filter(s => s !== service),
+    }));
+  };
+
+  const handleFrequencyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      cleaningFrequency: e.target.value,
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('submitting');
@@ -60,22 +80,22 @@ const ContactPage = () => {
     setTimeout(() => {
       console.log('Form submitted:', formData);
       setFormStatus('success');
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        services: [],
+        otherService: '',
+        cleaningFrequency: '',
+        message: '',
+      });
     }, 1500);
   };
 
   return (
     <>
       {/* Hero Section */}
-      <HeroSection>
-        <HeroOverlay />
-        <HeroContent>
-          <Container>
-            <HeroTitle>Contact Us</HeroTitle>
-            <HeroSubtitle>Get your free consultation and custom quote today</HeroSubtitle>
-          </Container>
-        </HeroContent>
-      </HeroSection>
+      <HeroSection title="Contact Us" subtitle="Get your free consultation and custom quote today" />
 
       {/* Contact Info & Form */}
       <Section variant="secondary">
@@ -85,15 +105,15 @@ const ContactPage = () => {
             <ContactInfo>
               <InfoTitle>Get In Touch</InfoTitle>
               <InfoText>
-                Have questions or ready to book a cleaning? We're here to help! Reach out using any of the methods
-                below, and we'll get back to you promptly.
+                Questions about our services or ready to schedule your cleaning? We'd love to hear from you! Contact us
+                using any of the methods below, and we'll respond quickly.
               </InfoText>
 
               <ContactDetails>
                 <ContactDetail>
                   <DetailContent>
                     <DetailTitle>Location</DetailTitle>
-                    <DetailText>Suffolk County, Bellport NY</DetailText>
+                    <DetailText>Servicing the Greater Austin, Texas Region!</DetailText>
                   </DetailContent>
                 </ContactDetail>
 
@@ -101,9 +121,7 @@ const ContactPage = () => {
                   <DetailContent>
                     <DetailTitle>Phone</DetailTitle>
                     <DetailText>
-                      <PhoneLink href="tel:+16316054192">(631) 605-4192</PhoneLink>
-                      <br />
-                      <PhoneLink href="tel:+16314648411">(631) 464-8411</PhoneLink>
+                      <PhoneLink href="tel:+5126589899">(512) 658-9899</PhoneLink>
                     </DetailText>
                   </DetailContent>
                 </ContactDetail>
@@ -112,9 +130,9 @@ const ContactPage = () => {
                   <DetailContent>
                     <DetailTitle>Business Hours</DetailTitle>
                     <DetailText>
-                      Monday - Sunday
+                      Monday - Friday
                       <br />
-                      8:00 AM - 6:00 PM
+                      8:00 AM - 5:30 PM CST
                     </DetailText>
                   </DetailContent>
                 </ContactDetail>
@@ -122,30 +140,19 @@ const ContactPage = () => {
                 <ContactDetail>
                   <DetailContent>
                     <DetailTitle>Pricing</DetailTitle>
-                    <DetailText>
-                      Custom quotes based on your needs
-                      <br />
-                      <strong>Free consultations available!</strong>
-                    </DetailText>
+                    <DetailText>Custom quotes based on your needs</DetailText>
                   </DetailContent>
                 </ContactDetail>
               </ContactDetails>
 
-              <SocialSection>
-                <SocialTitle>Follow Us</SocialTitle>
-                <SocialLink
-                  href="https://www.facebook.com/profile.php?id=61579291254035"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Visit our Facebook Page
-                </SocialLink>
-              </SocialSection>
+              <PhotoSection>
+                <ContactPhoto src={contactImage} alt="Contact us for professional cleaning services" />
+              </PhotoSection>
             </ContactInfo>
 
             {/* Contact Form */}
             <FormContainer>
-              <FormTitle>Request a Quote</FormTitle>
+              <FormTitle>Contact Us</FormTitle>
               <FormDescription>Fill out the form below and we'll get back to you as soon as possible</FormDescription>
 
               {formStatus === 'success' && (
@@ -197,20 +204,82 @@ const ContactPage = () => {
                 </FormGroup>
 
                 <FormGroup>
-                  <Label htmlFor="service">Service Needed *</Label>
-                  <Select id="service" name="service" value={formData.service} onChange={handleInputChange} required>
-                    <option value="">Select a service</option>
-                    <option value="house-cleaning">House Cleaning</option>
-                    <option value="apartment-cleaning">Apartment Cleaning</option>
-                    <option value="office-cleaning">Office Cleaning</option>
-                    <option value="condo-cleaning">Condo Cleaning</option>
-                    <option value="deep-cleaning">Deep Cleaning</option>
-                    <option value="after-party">After Party Cleaning</option>
-                    <option value="post-construction">Post Construction Cleaning</option>
-                    <option value="commercial">Commercial Cleaning</option>
-                    <option value="summer-housekeeping">Summer Housekeeping</option>
-                    <option value="other">Other</option>
-                  </Select>
+                  <Label>Service Needed *</Label>
+                  <CheckboxGroup>
+                    <CheckboxItem>
+                      <Checkbox
+                        type="checkbox"
+                        id="residential"
+                        checked={formData.services.includes('residential')}
+                        onChange={e => handleServiceChange('residential', e.target.checked)}
+                      />
+                      <CheckboxLabel htmlFor="residential">Residential</CheckboxLabel>
+                    </CheckboxItem>
+                    <CheckboxItem>
+                      <Checkbox
+                        type="checkbox"
+                        id="move-in-out"
+                        checked={formData.services.includes('move-in-out')}
+                        onChange={e => handleServiceChange('move-in-out', e.target.checked)}
+                      />
+                      <CheckboxLabel htmlFor="move-in-out">Move In/Out</CheckboxLabel>
+                    </CheckboxItem>
+                    <CheckboxItem>
+                      <Checkbox
+                        type="checkbox"
+                        id="post-construction"
+                        checked={formData.services.includes('post-construction')}
+                        onChange={e => handleServiceChange('post-construction', e.target.checked)}
+                      />
+                      <CheckboxLabel htmlFor="post-construction">Post Construction</CheckboxLabel>
+                    </CheckboxItem>
+                    <CheckboxItem>
+                      <Checkbox
+                        type="checkbox"
+                        id="other"
+                        checked={formData.services.includes('other')}
+                        onChange={e => handleServiceChange('other', e.target.checked)}
+                      />
+                      <CheckboxLabel htmlFor="other">Other</CheckboxLabel>
+                    </CheckboxItem>
+                  </CheckboxGroup>
+                  {formData.services.includes('other') && (
+                    <OtherServiceInput
+                      type="text"
+                      name="otherService"
+                      value={formData.otherService}
+                      onChange={handleInputChange}
+                      placeholder="Please specify your service"
+                    />
+                  )}
+                </FormGroup>
+
+                <FormGroup>
+                  <Label>Cleaning Frequency *</Label>
+                  <RadioGroup>
+                    <RadioItem>
+                      <Radio
+                        type="radio"
+                        id="recurring"
+                        name="cleaningFrequency"
+                        value="recurring"
+                        checked={formData.cleaningFrequency === 'recurring'}
+                        onChange={handleFrequencyChange}
+                      />
+                      <RadioLabel htmlFor="recurring">Recurring</RadioLabel>
+                    </RadioItem>
+                    <RadioItem>
+                      <Radio
+                        type="radio"
+                        id="one-time"
+                        name="cleaningFrequency"
+                        value="one-time"
+                        checked={formData.cleaningFrequency === 'one-time'}
+                        onChange={handleFrequencyChange}
+                      />
+                      <RadioLabel htmlFor="one-time">One-Time</RadioLabel>
+                    </RadioItem>
+                  </RadioGroup>
                 </FormGroup>
 
                 <FormGroup>
@@ -226,7 +295,7 @@ const ContactPage = () => {
                 </FormGroup>
 
                 <Button type="submit" variant="primary" size="large" disabled={formStatus === 'submitting'} fullWidth>
-                  {formStatus === 'submitting' ? 'Sending...' : 'Get Free Quote'}
+                  {formStatus === 'submitting' ? 'Sending...' : 'Submit Request'}
                 </Button>
               </Form>
             </FormContainer>

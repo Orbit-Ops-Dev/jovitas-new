@@ -16,9 +16,7 @@ import {
   FeatureTitle,
   FeatureText,
 } from './styled';
-import { Button } from '@material-tailwind/react';
-import { Link } from 'react-router-dom';
-import { AboutGrid, AboutContent, AboutTitle, AboutText, AboutFeatures, Feature, AboutImage } from '../home/styled';
+import { AboutGrid, AboutContent, AboutTitle, AboutText, AboutImage } from '../home/styled';
 
 const AboutPage = () => {
   return (
@@ -35,19 +33,20 @@ const AboutPage = () => {
             <AboutContent>
               <AboutTitle>A Short Story About Us</AboutTitle>
               <AboutText>
-                With years of experience serving Suffolk County, Liria's Cleaning Service has built a reputation for
-                reliability, professionalism, and exceptional results. We understand that your time is valuable, which
-                is why we offer flexible scheduling and deliver consistently excellent service.
+                We deliver professional and reliable cleaning services tailored to meet your needs, ensuring spotless
+                and welcoming spaces every time around Austin, TX!
               </AboutText>
-              <AboutFeatures>
-                <Feature>✓ Professional & Certified Team</Feature>
-                <Feature>✓ Flexible Scheduling</Feature>
-                <Feature>✓ Eco-Friendly Products</Feature>
-                <Feature>✓ 100% Satisfaction Guaranteed</Feature>
-              </AboutFeatures>
-              <Link to="/about">
-                <Button variant="primary">Learn More About Us</Button>
-              </Link>
+              <AboutText>
+                Serving a variety of locations, we specialize in move-in/move-out cleaning, post-construction cleaning,
+                and residential cleaning (house cleaning). Whether you're settling into a new home, refreshing your
+                living space, or tidying up after construction, our tailored cleaning solutions ensure a spotless,
+                inviting environment. Our mission is to deliver exceptional service with attention to detail, creating
+                spaces that truly shine. Thank you for trusting us to make your space clean, fresh, and welcoming!
+              </AboutText>
+              <AboutText>
+                Our mission is to deliver exceptional service that creates inviting, spotless environments for our
+                clients.
+              </AboutText>
             </AboutContent>
             <AboutImage
               src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
@@ -60,17 +59,18 @@ const AboutPage = () => {
 
       <Section variant="secondary">
         <Container>
-          {/* Why Choose Us Section */}
+          {/* What Sets Us Apart Section */}
           <ContentSection>
             <TextContent>
-              <SectionTitle>Why Choose Us?</SectionTitle>
+              <SectionTitle>What Sets Us Apart</SectionTitle>
               <FeaturesList>
                 <FeatureItem>
                   <FeatureIcon>✓</FeatureIcon>
                   <FeatureContent>
-                    <FeatureTitle>Professional & Trustworthy</FeatureTitle>
+                    <FeatureTitle>Local Austin Expertise</FeatureTitle>
                     <FeatureText>
-                      Our team is experienced, reliable, and dedicated to providing exceptional service.
+                      We know Austin inside and out, understanding the unique needs of homes and businesses throughout
+                      the area.
                     </FeatureText>
                   </FeatureContent>
                 </FeatureItem>
@@ -78,9 +78,9 @@ const AboutPage = () => {
                 <FeatureItem>
                   <FeatureIcon>✓</FeatureIcon>
                   <FeatureContent>
-                    <FeatureTitle>Flexible Scheduling</FeatureTitle>
+                    <FeatureTitle>Work Around Your Life</FeatureTitle>
                     <FeatureText>
-                      We work around your schedule with availability Monday through Sunday, 8 AM to 6 PM.
+                      Life in Austin is busy! We fit our cleaning around your schedule, not the other way around.
                     </FeatureText>
                   </FeatureContent>
                 </FeatureItem>
@@ -88,17 +88,20 @@ const AboutPage = () => {
                 <FeatureItem>
                   <FeatureIcon>✓</FeatureIcon>
                   <FeatureContent>
-                    <FeatureTitle>Satisfaction Guaranteed</FeatureTitle>
-                    <FeatureText>We're not satisfied until you are. We stand behind our work 100%.</FeatureText>
+                    <FeatureTitle>We Care About Results</FeatureTitle>
+                    <FeatureText>
+                      If you're not completely happy with our work, we'll make it right. It's that simple.
+                    </FeatureText>
                   </FeatureContent>
                 </FeatureItem>
 
                 <FeatureItem>
                   <FeatureIcon>✓</FeatureIcon>
                   <FeatureContent>
-                    <FeatureTitle>Responsive Communication</FeatureTitle>
+                    <FeatureTitle>Real People, Real Communication</FeatureTitle>
                     <FeatureText>
-                      We respond quickly to inquiries and keep you informed throughout the process.
+                      No automated responses or runarounds. When you call or text, you'll talk to someone who actually
+                      cares about your space.
                     </FeatureText>
                   </FeatureContent>
                 </FeatureItem>
@@ -106,14 +109,15 @@ const AboutPage = () => {
             </TextContent>
           </ContentSection>
 
-          {/* Our Commitment Section */}
+          {/* Our Approach Section */}
           <ContentSection>
             <TextContent>
-              <SectionTitle>Our Commitment</SectionTitle>
+              <SectionTitle>Our Approach</SectionTitle>
               <Text>
-                We are committed to providing top-quality cleaning services that exceed your expectations. Whether you
-                need a one-time deep clean or regular maintenance, we bring professionalism, attention to detail, and a
-                personal touch to every job.
+                Every cleaning job is different, and we treat it that way. Whether you're moving into your dream home in
+                South Austin, need post-construction cleanup after a renovation, or just want your regular house
+                cleaning done right, we bring the same level of care and attention to detail. We're not just cleaning
+                your space – we're helping you create the home or office environment you deserve.
               </Text>
             </TextContent>
           </ContentSection>

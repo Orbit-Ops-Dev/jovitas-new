@@ -1,49 +1,5 @@
 import styled from 'styled-components';
 
-// Hero Section Styles
-export const HeroSection = styled.section`
-  position: relative;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.primary} 0%,
-    ${({ theme }) => theme.colors.primaryDark} 100%
-  );
-`;
-
-export const HeroOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.2);
-`;
-
-export const HeroContent = styled.div`
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  text-align: center;
-  padding: ${({ theme }) => theme.spacing['3xl']} 0;
-`;
-
-export const HeroTitle = styled.h1`
-  font-family: ${({ theme }) => theme.typography.fontFamily.heading};
-  font-size: ${({ theme }) => theme.typography.fontSize['4xl']};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
-  color: ${({ theme }) => theme.colors.white};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-`;
-
-export const HeroSubtitle = styled.p`
-  font-size: ${({ theme }) => theme.typography.fontSize.xl};
-  color: ${({ theme }) => theme.colors.white};
-  opacity: 0.95;
-`;
-
 // Contact Grid Layout
 export const ContactGrid = styled.div`
   display: grid;
@@ -124,28 +80,21 @@ export const PhoneLink = styled.a`
   }
 `;
 
-export const SocialSection = styled.div`
+export const PhotoSection = styled.div`
   padding-top: ${({ theme }) => theme.spacing.xl};
   border-top: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
-export const SocialTitle = styled.h3`
-  font-family: ${({ theme }) => theme.typography.fontFamily.heading};
-  font-size: ${({ theme }) => theme.typography.fontSize.lg};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
-  color: ${({ theme }) => theme.colors.textPrimary};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-`;
-
-export const SocialLink = styled.a`
-  display: inline-block;
-  color: ${({ theme }) => theme.colors.primary};
-  text-decoration: none;
-  font-size: ${({ theme }) => theme.typography.fontSize.base};
+export const ContactPhoto = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: ${({ theme }) => theme.borderRadius.md};
+  box-shadow: ${({ theme }) => theme.shadows.card};
   transition: ${({ theme }) => theme.transitions.fast};
 
   &:hover {
-    text-decoration: underline;
+    transform: translateY(-2px);
+    box-shadow: ${({ theme }) => theme.shadows.cardHover};
   }
 `;
 
@@ -261,4 +210,60 @@ export const Textarea = styled.textarea`
     border-color: ${({ theme }) => theme.colors.primary};
     box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}20;
   }
+`;
+
+export const CheckboxGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.sm};
+`;
+
+export const CheckboxItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.sm};
+`;
+
+export const Checkbox = styled.input`
+  width: 18px;
+  height: 18px;
+  accent-color: ${({ theme }) => theme.colors.primary};
+  cursor: pointer;
+`;
+
+export const CheckboxLabel = styled.label`
+  font-size: ${({ theme }) => theme.typography.fontSize.base};
+  color: ${({ theme }) => theme.colors.textPrimary};
+  cursor: pointer;
+  user-select: none;
+`;
+
+export const RadioGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.sm};
+`;
+
+export const RadioItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.sm};
+`;
+
+export const Radio = styled.input`
+  width: 18px;
+  height: 18px;
+  accent-color: ${({ theme }) => theme.colors.primary};
+  cursor: pointer;
+`;
+
+export const RadioLabel = styled.label`
+  font-size: ${({ theme }) => theme.typography.fontSize.base};
+  color: ${({ theme }) => theme.colors.textPrimary};
+  cursor: pointer;
+  user-select: none;
+`;
+
+export const OtherServiceInput = styled(Input)`
+  margin-top: ${({ theme }) => theme.spacing.sm};
 `;
