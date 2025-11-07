@@ -164,7 +164,7 @@ export const CloseText = styled.button`
 	display: none;
 	background: none;
 	border: none;
-	color: ${({ theme }) => theme.colors.gray600};
+	color: ${({ theme }) => theme.colors.gray};
 	font-size: ${({ theme }) => theme.typography.fontSize.sm};
 	font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
 	text-decoration: underline;
