@@ -1,0 +1,22 @@
+{
+  "name": "Jovita's Cleaning Service",
+  "short_name": "Jovita's Cleaning",
+  "description": "Professional cleaning services in Austin, TX. Residential, move-in/out, and post-construction cleaning.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#E91E63",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo-pink-output.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "lifestyle"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/"
+}

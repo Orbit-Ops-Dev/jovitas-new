@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Section from '../../common/section/Section.tsx';
 import Container from '../../common/container/internals.tsx';
 import Button from '../../common/button/internals.tsx';
@@ -12,12 +13,106 @@ import { testimonials } from './testimonials/data.ts';
 import TestimonialCard from './testimonials/internals.tsx';
 
 const HomePage = () => {
+  useEffect(() => {
+    // Update page title for SEO
+    document.title = "Jovita's Cleaning Service - Professional Cleaning in Austin, TX | Residential & Commercial";
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Professional cleaning services in Austin, TX. Expert residential cleaning, move-in/out cleaning, and post-construction cleaning. Free quotes. Call (512) 658-9899.');
+    }
+
+    // Add comprehensive structured data for home page
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": "https://jovitascleaningservice.com",
+      "name": "Jovita's Cleaning Service",
+      "image": "https://jovitascleaningservice.com/logo-pink-output.png",
+      "url": "https://jovitascleaningservice.com",
+      "telephone": "(512) 658-9899",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Austin",
+        "addressRegion": "TX",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 30.2672,
+        "longitude": -97.7431
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Austin",
+          "sameAs": "https://en.wikipedia.org/wiki/Austin,_Texas"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Cleaning Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Residential Cleaning",
+              "description": "Professional house cleaning services for Austin homes"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Move-In/Move-Out Cleaning",
+              "description": "Thorough cleaning for moving transitions in Austin, TX"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Post-Construction Cleaning",
+              "description": "Deep cleaning after construction or renovation projects"
+            }
+          }
+        ]
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "17:30"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "50"
+      },
+      "description": "Jovita's Cleaning Service provides professional residential cleaning, move-in/out cleaning, and post-construction cleaning services throughout Austin, TX. Trusted, reliable, and thorough cleaning solutions."
+    });
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup structured data on unmount
+      const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+      scripts.forEach(s => s.remove());
+    };
+  }, []);
+
   return (
     <>
       {/* Hero Section */}
       <HeroSection
-        title="Exceptional Cleaning Services for Every Need"
-        subtitle="Experience top-quality residential and commercial cleaning tailored to your requirements."
+        title="Professional Cleaning Services in Austin, TX"
+        subtitle="Experience top-quality residential, move-in/out, and post-construction cleaning tailored to your needs."
         variant="image"
         imageSrc={heroImage}
         centered={true}
@@ -57,9 +152,9 @@ const HomePage = () => {
       <Section variant="secondary">
         <Container>
           <SectionHeader>
-            <SectionTitle>Exceptional Care In Every Service</SectionTitle>
+            <SectionTitle>Exceptional Cleaning Services in Austin, TX</SectionTitle>
             <SectionDescription>
-              Top-tier cleaning for homes, offices, and post-construction areas, expertly handled by our team
+              Top-tier residential cleaning, move-in/out cleaning, and post-construction cleaning for Austin homes and businesses, expertly handled by our professional team
             </SectionDescription>
           </SectionHeader>
 

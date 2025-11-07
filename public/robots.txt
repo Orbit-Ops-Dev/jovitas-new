@@ -1,0 +1,11 @@
+# Robots.txt for Jovita's Cleaning Service
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://jovitascleaningservice.com/sitemap.xml
+
+# Crawl-delay for polite crawling (optional)
+Crawl-delay: 1

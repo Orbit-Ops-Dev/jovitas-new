@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Section from '../../common/section/Section';
 import Container from '../../common/container/internals';
 import HeroSection from '../../common/hero/internals';
@@ -19,11 +20,68 @@ import {
 import { AboutGrid, AboutContent, AboutTitle, AboutText, AboutImage } from '../home/styled';
 
 const AboutPage = () => {
+  useEffect(() => {
+    // Update page title for SEO
+    document.title = "About Us - Jovita's Cleaning Service | Austin TX Professional Cleaners";
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Learn about Jovita\'s Cleaning Service - Austin\'s trusted professional cleaning company. Residential, move-in/out, and post-construction cleaning services.');
+    }
+
+    // Add structured data for local business
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Jovita's Cleaning Service",
+      "image": "https://jovitascleaningservice.com/logo-pink-output.png",
+      "@id": "https://jovitascleaningservice.com",
+      "url": "https://jovitascleaningservice.com",
+      "telephone": "(512) 658-9899",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Austin",
+        "addressRegion": "TX",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 30.2672,
+        "longitude": -97.7431
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Austin",
+        "sameAs": "https://en.wikipedia.org/wiki/Austin,_Texas"
+      },
+      "description": "Professional cleaning services in Austin, TX. Specializing in residential cleaning, move-in/move-out cleaning, and post-construction cleaning.",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "17:30"
+        }
+      ]
+    });
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup structured data on unmount
+      const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+      scripts.forEach(s => s.remove());
+    };
+  }, []);
+
   return (
     <>
       <HeroSection
-        title="About Liria's Cleaning Service"
-        subtitle="Professional, reliable, and trustworthy cleaning services"
+        title="About Jovita's Cleaning Service"
+        subtitle="Professional, reliable, and trustworthy cleaning services in Austin, TX"
       />
 
       {/* About Preview */}
@@ -31,21 +89,21 @@ const AboutPage = () => {
         <Container>
           <AboutGrid>
             <AboutContent>
-              <AboutTitle>A Short Story About Us</AboutTitle>
+              <AboutTitle>Professional Cleaning Services in Austin, TX</AboutTitle>
               <AboutText>
-                We deliver professional and reliable cleaning services tailored to meet your needs, ensuring spotless
+                Jovita's Cleaning Service delivers professional and reliable cleaning services tailored to meet your needs, ensuring spotless
                 and welcoming spaces every time around Austin, TX!
               </AboutText>
               <AboutText>
-                Serving a variety of locations, we specialize in move-in/move-out cleaning, post-construction cleaning,
-                and residential cleaning (house cleaning). Whether you're settling into a new home, refreshing your
-                living space, or tidying up after construction, our tailored cleaning solutions ensure a spotless,
+                Serving the Greater Austin area, we specialize in move-in/move-out cleaning, post-construction cleaning,
+                and residential house cleaning. Whether you're settling into a new home in South Austin, refreshing your
+                living space, or need deep cleaning after construction, our tailored cleaning solutions ensure a spotless,
                 inviting environment. Our mission is to deliver exceptional service with attention to detail, creating
-                spaces that truly shine. Thank you for trusting us to make your space clean, fresh, and welcoming!
+                spaces that truly shine. Thank you for trusting us to make your Austin home or business clean, fresh, and welcoming!
               </AboutText>
               <AboutText>
-                Our mission is to deliver exceptional service that creates inviting, spotless environments for our
-                clients.
+                Our mission is to deliver exceptional cleaning service that creates inviting, spotless environments for our
+                Austin clients through professional residential cleaning, move-in/out cleaning, and post-construction cleaning services.
               </AboutText>
             </AboutContent>
             <AboutImage
