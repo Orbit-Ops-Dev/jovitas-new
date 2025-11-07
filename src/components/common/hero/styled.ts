@@ -30,6 +30,19 @@ export const HeroVideo = styled.video`
   z-index: 0;
 `;
 
+export const HeroImage = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+`;
+
 export const HeroOverlay = styled.div<{ $hasVideo?: boolean }>`
   position: absolute;
   top: 0;

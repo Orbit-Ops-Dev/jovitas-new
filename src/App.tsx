@@ -5,6 +5,7 @@ import theme from './styles/theme';
 import GlobalStyles from './styles/globalStyles';
 import Navbar from './components/common/navbar/internals';
 import Footer from './components/common/footer/internals';
+import PromoPopup from './components/common/popup/internals';
 
 // Lazy load page components for better code splitting
 const HomePage = lazy(() => import('./components/pages/home/internals'));
@@ -45,6 +46,8 @@ const App: React.FC = () => {
       <Router>
         <ScrollToHashElement />
         <Navbar />
+        {/* First-visit promotional popup */}
+        <PromoPopup />
         <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
           <Routes>
             <Route path="/" element={<HomePage />} />

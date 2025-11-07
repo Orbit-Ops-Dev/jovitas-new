@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FAQAccordionProps } from './types';
-import { FaqAnswer, FaqAnswerContent, FaqIcon, FaqItem, FaqList, FaqQuestion } from './styled';
+import { FaqAnswer, FaqAnswerContent, FaqAnswerList, FaqAnswerListItem, FaqIcon, FaqItem, FaqList, FaqQuestion } from './styled';
 
 const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs }) => {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
@@ -28,7 +28,16 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs }) => {
             </FaqIcon>
           </FaqQuestion>
           <FaqAnswer $isOpen={openFaqId === faq.id}>
-            <FaqAnswerContent>{faq.answer}</FaqAnswerContent>
+            <FaqAnswerContent>
+              {faq.answer && <p>{faq.answer}</p>}
+              {faq.answerList && (
+                <FaqAnswerList>
+                  {faq.answerList.map(item => (
+                    <FaqAnswerListItem key={item}>{item}</FaqAnswerListItem>
+                  ))}
+                </FaqAnswerList>
+              )}
+            </FaqAnswerContent>
           </FaqAnswer>
         </FaqItem>
       ))}

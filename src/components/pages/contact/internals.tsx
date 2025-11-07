@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Section from '../../common/section/Section';
 import Container from '../../common/container/internals';
 import Button from '../../common/button/internals';
 import HeroSection from '../../common/hero/internals';
-import contactImage from '../../../assets/contact.jpg';
+import contactImage from '../../../assets/home/contact.jpg';
 import {
   ContactGrid,
   ContactInfo,
@@ -39,6 +40,7 @@ import {
 } from './styled';
 
 const ContactPage = () => {
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -91,6 +93,14 @@ const ContactPage = () => {
       });
     }, 1500);
   };
+
+  // Prefill message if provided via query params
+  useEffect(() => {
+    const prefillMessage = searchParams.get('prefillMessage');
+    if (prefillMessage) {
+      setFormData(prev => ({ ...prev, message: prefillMessage }));
+    }
+  }, [searchParams]);
 
   return (
     <>

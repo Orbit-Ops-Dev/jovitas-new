@@ -60,14 +60,35 @@ export const FaqAnswer = styled.div<{ $isOpen: boolean }>`
   transition: max-height ${({ theme }) => theme.transitions.normal};
 `;
 
-export const FaqAnswerContent = styled.p`
+export const FaqAnswerContent = styled.div`
   padding: 0 ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing.lg};
   font-size: ${({ theme }) => theme.typography.fontSize.base};
   color: ${({ theme }) => theme.colors.textSecondary};
   line-height: ${({ theme }) => theme.typography.lineHeight.relaxed};
   margin: 0;
 
+  p {
+    margin: 0 0 ${({ theme }) => theme.spacing.md};
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0 ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.md};
   }
+`;
+
+export const FaqAnswerList = styled.ul`
+  list-style: disc inside;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.xl};
+  margin: 0;
+  padding: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const FaqAnswerListItem = styled.li`
+  margin: 0;
 `;

@@ -16,11 +16,18 @@ export const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 80px;
 `;
 
-export const Logo = styled(Link)`
+export const Logo = styled.div`
   text-decoration: none;
   flex: 1;
+  display: flex;
+  align-items: center;
+  
+  img {
+    object-fit: contain;
+  }
 `;
 
 export const LogoText = styled.h1`
@@ -50,7 +57,7 @@ export const HamburgerButton = styled.button<{ $isOpen: boolean }>`
   span {
     width: 25px;
     height: 3px;
-    background-color: ${({ theme }) => theme.colors.dark};
+    background-color: ${({ theme }) => theme.colors.white};
     transition: all 0.3s ease-in-out;
     position: absolute;
     left: 5px;

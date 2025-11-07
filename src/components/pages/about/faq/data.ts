@@ -4,8 +4,18 @@ export const faqs: FAQ[] = [
   {
     id: '1',
     question: 'What areas do you serve?',
-    answer:
-      "We proudly serve Austin and the surrounding areas, including North Austin, Round Rock, Pflugerville, Lakeway, Hutto, Taylor, Elgin, Manor, and throughout Williamson County. Whether you're in the heart of Austin or in one of our neighboring communities, we're here to help keep your space spotless.",
+    answer: 'We proudly serve Austin and surrounding communities. If you don’t see your area listed, reach out – we may still be able to help.',
+    answerList: [
+      'Elgin',
+      'Manor',
+      'North Austin',
+      'Pflugerville',
+      'Round Rock',
+      'Williamson County',
+      'Lakeway',
+      'Hutto',
+      'Taylor',
+    ],
   },
   {
     id: '2',

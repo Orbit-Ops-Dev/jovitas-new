@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { Nav, NavContainer, Logo, LogoText, HamburgerButton, NavMenu, NavItem, NavLink, SocialLinks, SocialLink } from './styled';
+import whiteLogo from '../../../assets/logo-white.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,8 +18,8 @@ const Navbar = () => {
   return (
     <Nav>
       <NavContainer>
-        <Logo to="/">
-          <LogoText>JCS</LogoText>
+        <Logo>
+          <img src={whiteLogo} alt="Jovita's Cleaning Service" style={{ height: '120px', width: 'auto' }} />
         </Logo>
 
         <HamburgerButton onClick={() => setIsMenuOpen(!isMenuOpen)} $isOpen={isMenuOpen}>
@@ -39,7 +40,7 @@ const Navbar = () => {
 
         <SocialLinks>
           <SocialLink
-            href="https://facebook.com"
+            href="https://www.facebook.com/jovita.s.cleaning.2025"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -47,7 +48,7 @@ const Navbar = () => {
             <FaFacebookF />
           </SocialLink>
           <SocialLink
-            href="https://instagram.com"
+            href="https://www.instagram.com/jovitascleaningatx/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -55,7 +56,7 @@ const Navbar = () => {
             <FaInstagram />
           </SocialLink>
           <SocialLink
-            href="https://wa.me/"
+            href="https://api.whatsapp.com/send/?phone=%2B15126618096&text&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"

@@ -1,7 +1,37 @@
 import { Service } from './types';
-import residentialImage from '../../../assets/residential.jpg';
-import moveInOutImage from '../../../assets/move-in-out.jpg';
-import postConstructionImage from '../../../assets/post-construction.jpg';
+import residentialImage from '../../../assets/home/residential.jpg';
+import moveInOutImage from '../../../assets/home/move-in-out.jpg';
+import postConstructionImage from '../../../assets/home/post-construction.jpg';
+
+// Dynamically import all residential service images for the gallery
+const residentialGallery: string[] = Object.entries(
+  import.meta.glob('../../../assets/services/residential/*.{jpg,jpeg,png,webp}', {
+    eager: true,
+    import: 'default',
+  }) as Record<string, string>
+)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, src]) => src as string);
+
+// Dynamically import all post-construction images for the gallery
+const postConstructionGallery: string[] = Object.entries(
+  import.meta.glob('../../../assets/services/construction/*.{jpg,jpeg,png,webp}', {
+    eager: true,
+    import: 'default',
+  }) as Record<string, string>
+)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, src]) => src as string);
+
+// Dynamically import all move-in/move-out images for the gallery
+const moveInOutGallery: string[] = Object.entries(
+  import.meta.glob('../../../assets/services/move-in-out/*.{jpg,jpeg,png,webp}', {
+    eager: true,
+    import: 'default',
+  }) as Record<string, string>
+)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, src]) => src as string);
 
 export const services: Service[] = [
   {
@@ -47,7 +77,7 @@ export const servicesDetailed: Service[] = [
     ],
     image: residentialImage,
     slug: 'residential-cleaning',
-    gallery: [residentialImage, moveInOutImage, postConstructionImage, residentialImage],
+    gallery: residentialGallery,
   },
   {
     id: '2',
@@ -67,7 +97,7 @@ export const servicesDetailed: Service[] = [
     ],
     image: moveInOutImage,
     slug: 'move-in-move-out-cleaning',
-    gallery: [moveInOutImage, residentialImage, postConstructionImage, moveInOutImage],
+    gallery: moveInOutGallery,
   },
   {
     id: '3',
@@ -86,6 +116,6 @@ export const servicesDetailed: Service[] = [
     ],
     image: postConstructionImage,
     slug: 'post-construction-cleaning',
-    gallery: [postConstructionImage, residentialImage, moveInOutImage, postConstructionImage],
+    gallery: postConstructionGallery,
   },
 ];

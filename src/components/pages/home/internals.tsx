@@ -4,6 +4,7 @@ import Button from '../../common/button/internals.tsx';
 import Carousel from './carousel/internals.tsx';
 import ServicePreviewCard from './service-preview/internals.tsx';
 import HeroSection from '../../common/hero/internals.tsx';
+import heroImage from '../../../assets/home/hero.jpg';
 import SectionTitle from '../../common/section/SectionTitle.tsx';
 import { services } from '../services/data.ts';
 import { HeroButtons, StyledLink, SectionHeader, SectionDescription, CarouselWrapper, CTAContainer } from './styled.ts';
@@ -17,8 +18,8 @@ const HomePage = () => {
       <HeroSection
         title="Exceptional Cleaning Services for Every Need"
         subtitle="Experience top-quality residential and commercial cleaning tailored to your requirements."
-        variant="video"
-        videoSrc="https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4"
+        variant="image"
+        imageSrc={heroImage}
         centered={true}
       >
         <HeroButtons>

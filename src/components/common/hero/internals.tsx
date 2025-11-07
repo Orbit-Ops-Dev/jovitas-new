@@ -1,21 +1,14 @@
 import React from 'react';
 import Container from '../container/internals';
 import { HeroSectionProps } from './types';
-import {
-  Hero,
-  HeroVideo,
-  HeroOverlay,
-  HeroContent,
-  HeroTextContainer,
-  HeroTitle,
-  HeroSubtitle,
-} from './styled';
+import { Hero, HeroVideo, HeroImage, HeroOverlay, HeroContent, HeroTextContainer, HeroTitle, HeroSubtitle } from './styled';
 
 const HeroSection: React.FC<HeroSectionProps> = ({
   title,
   subtitle,
   variant = 'default',
   videoSrc,
+  imageSrc,
   children,
   centered,
 }) => {
@@ -27,7 +20,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           Your browser does not support the video tag.
         </HeroVideo>
       )}
-      <HeroOverlay $hasVideo={variant === 'video'} />
+      {variant === 'image' && imageSrc && <HeroImage src={imageSrc} alt="" aria-hidden />}
+      <HeroOverlay $hasVideo={variant === 'video' || variant === 'image'} />
       <HeroContent>
         <Container>
           <HeroTextContainer $centered={centered ?? variant !== 'video'}>

@@ -41,7 +41,16 @@ const Footer: React.FC = () => {
           {/* Information Column */}
           <FooterColumn>
             <FooterTitle>Information</FooterTitle>
-            <FooterText>Jovitascleaningatx@gmail.com</FooterText>
+            <FooterText>
+              <a href="mailto:Jovitascleaningatx@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                Jovitascleaningatx@gmail.com
+              </a>
+            </FooterText>
+            <FooterText>
+              <a href="tel:+15126589899" style={{ color: 'inherit', textDecoration: 'none' }}>
+                (512) 658-9899
+              </a>
+            </FooterText>
             <FooterText>Mon-Fri: 8:00am - 5:30pm</FooterText>
           </FooterColumn>
         </FooterMain>
