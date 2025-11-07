@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
-import { Nav, NavContainer, Logo, LogoText, HamburgerButton, NavMenu, NavItem, NavLink, SocialLinks, SocialLink } from './styled';
+import { Nav, NavContainer, Logo, HamburgerButton, NavMenu, NavItem, NavLink, SocialLinks, SocialLink } from './styled';
 import whiteLogo from '../../../assets/logo-white.png';
 
 const Navbar = () => {
