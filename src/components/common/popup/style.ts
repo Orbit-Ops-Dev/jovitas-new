@@ -125,6 +125,7 @@ export const CloseButton = styled.button`
 	transition: background ${({ theme }) => theme.transitions.fast}, transform ${({ theme }) => theme.transitions.fast};
 	cursor: pointer;
 	box-shadow: ${({ theme }) => theme.shadows.sm};
+	z-index: 10;
 
 	&:hover {
 		background: ${({ theme }) => theme.colors.primary};
@@ -140,6 +141,12 @@ export const CloseButton = styled.button`
 		outline: none;
 		border-color: ${({ theme }) => theme.colors.primary};
 	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+		background: rgba(255, 255, 255, 0.95);
+		backdrop-filter: blur(4px);
+		box-shadow: ${({ theme }) => theme.shadows.md};
+	}
 `;
 
 export const Highlight = styled.span`
@@ -151,5 +158,32 @@ export const SmallNote = styled.span`
 	font-size: ${({ theme }) => theme.typography.fontSize.xs};
 	color: ${({ theme }) => theme.colors.gray500};
 	margin-top: ${({ theme }) => theme.spacing.xs};
+`;
+
+export const CloseText = styled.button`
+	display: none;
+	background: none;
+	border: none;
+	color: ${({ theme }) => theme.colors.gray600};
+	font-size: ${({ theme }) => theme.typography.fontSize.sm};
+	font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
+	text-decoration: underline;
+	cursor: pointer;
+	padding: ${({ theme }) => theme.spacing.md} 0;
+	margin-top: ${({ theme }) => theme.spacing.sm};
+	transition: color ${({ theme }) => theme.transitions.fast};
+	text-align: center;
+
+	&:hover {
+		color: ${({ theme }) => theme.colors.primary};
+	}
+
+	&:active {
+		color: ${({ theme }) => theme.colors.primaryDark};
+	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+		display: block;
+	}
 `;
 

@@ -14,6 +14,7 @@ import {
 	CloseButton,
 	Highlight,
 	SmallNote,
+	CloseText,
 } from './style';
 
 const STORAGE_KEY = 'jovitas_first_visit_promo_v1';
@@ -71,12 +72,13 @@ const PromoPopup: React.FC<PromoPopupProps> = ({ imageSrc = promoImg, onClose })
 					<Description>
 						We have an amazing offer, just for you! Get <Highlight>$30 OFF</Highlight>, on your first deep cleaning service!
 					</Description>
-					<Actions>
-						<Button size="large" variant="primary" onClick={handleClaim}>
-							Claim Offer
-						</Button>
-					</Actions>
-					<SmallNote>New customers only. Terms apply.</SmallNote>
+				<Actions>
+					<Button size="large" variant="primary" onClick={handleClaim}>
+						Claim Offer
+					</Button>
+				</Actions>
+				<SmallNote>New customers only. Terms apply.</SmallNote>
+				<CloseText onClick={handleClose}>Close</CloseText>
 				</Content>
 			</Modal>
 		</Overlay>
