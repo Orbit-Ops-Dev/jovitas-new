@@ -107,18 +107,18 @@ export const DotsContainer = styled.div`
   margin-top: ${({ theme }) => theme.spacing.xl};
 `;
 
-export const Dot = styled.button<{ active: boolean }>`
+export const Dot = styled.button<{ $active: boolean }>`
   width: 12px;
   height: 12px;
   border-radius: ${({ theme }) => theme.borderRadius.full};
-  background-color: ${({ theme, active }) => (active ? theme.colors.primary : theme.colors.gray300)};
+  background-color: ${({ theme, $active }) => ($active ? theme.colors.primary : theme.colors.gray300)};
   border: none;
   cursor: pointer;
   transition: all ${({ theme }) => theme.transitions.fast};
   padding: 0;
 
   &:hover {
-    background-color: ${({ theme, active }) => (active ? theme.colors.primaryDark : theme.colors.gray400)};
+    background-color: ${({ theme, $active }) => ($active ? theme.colors.primaryDark : theme.colors.gray400)};
     transform: scale(1.2);
   }
 

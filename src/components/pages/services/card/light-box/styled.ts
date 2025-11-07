@@ -67,9 +67,9 @@ export const Image = styled.img`
   border-radius: ${({ theme }) => theme.borderRadius.md};
 `;
 
-export const NavButton = styled.button<{ position: 'left' | 'right' }>`
+export const NavButton = styled.button<{ $position: 'left' | 'right' }>`
   position: absolute;
-  ${({ position }) => position}: 10px;
+  ${({ $position }) => $position}: 10px;
   background: rgba(255, 255, 255, 0.2);
   border: none;
   color: white;
@@ -118,14 +118,14 @@ export const ThumbnailContainer = styled.div`
   }
 `;
 
-export const Thumbnail = styled.img<{ isActive: boolean }>`
+export const Thumbnail = styled.img<{ $isActive: boolean }>`
   width: 80px;
   height: 60px;
   object-fit: cover;
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   cursor: pointer;
-  opacity: ${({ isActive }) => (isActive ? 1 : 0.5)};
-  border: 2px solid ${({ isActive, theme }) => (isActive ? theme.colors.primary : 'transparent')};
+  opacity: ${({ $isActive }) => ($isActive ? 1 : 0.5)};
+  border: 2px solid ${({ $isActive, theme }) => ($isActive ? theme.colors.primary : 'transparent')};
   transition: all 0.2s;
 
   &:hover {

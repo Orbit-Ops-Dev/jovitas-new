@@ -150,7 +150,7 @@ const Carousel: React.FC<CarouselProps> = ({
           {scrollSnaps.map((_, index) => (
             <Dot
               key={index}
-              active={index === selectedIndex}
+              $active={index === selectedIndex}
               onClick={() => scrollTo(index)}
               aria-label={`Go to card ${index + 1}`}
             />

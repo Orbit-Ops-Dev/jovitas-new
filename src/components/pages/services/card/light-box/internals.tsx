@@ -53,7 +53,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, isOpen, onClose, initialInd
 
         <ImageContainer>
           {images.length > 1 && (
-            <NavButton onClick={goToPrevious} position="left">
+            <NavButton onClick={goToPrevious} $position="left">
               &#8249;
             </NavButton>
           )}
@@ -61,7 +61,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, isOpen, onClose, initialInd
           <Image src={images[currentIndex]} alt={`Image ${currentIndex + 1}`} />
 
           {images.length > 1 && (
-            <NavButton onClick={goToNext} position="right">
+            <NavButton onClick={goToNext} $position="right">
               &#8250;
             </NavButton>
           )}
@@ -80,7 +80,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, isOpen, onClose, initialInd
                 key={index}
                 src={image}
                 alt={`Thumbnail ${index + 1}`}
-                isActive={index === currentIndex}
+                $isActive={index === currentIndex}
                 onClick={() => setCurrentIndex(index)}
               />
             ))}
