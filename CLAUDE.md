@@ -54,7 +54,7 @@ Each component lives in its own folder with up to four files:
 | `types.ts` | TypeScript types/interfaces |
 | `data.ts` | Static content/data (where applicable) |
 
-Two exceptions exist: `common/section/` uses `Section.tsx` / `SectionTitle.tsx`, and `common/popup/` names its styles `style.ts` (singular). Match the folder you're in rather than renaming.
+One exception exists: `common/section/` uses `Section.tsx` / `SectionTitle.tsx`. Match the folder you're in rather than renaming.
 
 Transient styled-component props use the `$` prefix (e.g. `$variant`, `$size`) to avoid forwarding to the DOM.
 
@@ -66,7 +66,6 @@ Transient styled-component props use the `$` prefix (e.g. `$variant`, `$size`) t
 - `Button` — supports `variant`, `size`, `fullWidth`
 - `Container` — max-width wrapper
 - `Section` — section wrapper with `variant` prop (`primary` / `secondary`)
-- `Popup` — first-visit promotional modal
 - `NotFound` — 404 page
 
 ### SEO
