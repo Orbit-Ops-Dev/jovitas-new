@@ -19,6 +19,7 @@ import {
   PhoneLink,
   PhotoSection,
   ContactPhoto,
+  MobilePhotoSection,
   FormContainer,
   FormTitle,
   FormDescription,
@@ -115,33 +116,36 @@ const ContactPage = () => {
   useEffect(() => {
     // Update page title for SEO
     document.title = "Contact Us - Jovita's Cleaning Service | Free Quote Austin TX";
-    
+
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Contact Jovita\'s Cleaning Service for a free quote. Professional cleaning services in Austin, TX. Call (512) 658-9899 or fill out our contact form.');
+      metaDescription.setAttribute(
+        'content',
+        "Contact Jovita's Cleaning Service for a free quote. Professional cleaning services in Austin, TX. Call (512) 658-9899 or fill out our contact form."
+      );
     }
 
     // Add structured data for contact page
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ContactPage",
-      "name": "Contact Jovita's Cleaning Service",
-      "description": "Get in touch with Jovita's Cleaning Service for professional cleaning services in Austin, TX",
-      "url": "https://jovitascleaningservice.com/contact",
-      "mainEntity": {
-        "@type": "LocalBusiness",
-        "name": "Jovita's Cleaning Service",
-        "telephone": "(512) 658-9899",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Austin",
-          "addressRegion": "TX",
-          "addressCountry": "US"
-        }
-      }
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      name: "Contact Jovita's Cleaning Service",
+      description: "Get in touch with Jovita's Cleaning Service for professional cleaning services in Austin, TX",
+      url: 'https://jovitascleaningservice.com/contact',
+      mainEntity: {
+        '@type': 'LocalBusiness',
+        name: "Jovita's Cleaning Service",
+        telephone: '(512) 658-9899',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Austin',
+          addressRegion: 'TX',
+          addressCountry: 'US',
+        },
+      },
     });
     document.head.appendChild(script);
 
@@ -161,9 +165,9 @@ const ContactPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <HeroSection 
-        title="Contact Jovita's Cleaning Service" 
-        subtitle="Get your free consultation and custom cleaning quote in Austin, TX today" 
+      <HeroSection
+        title="Contact Jovita's Cleaning Service"
+        subtitle="Get your free consultation and custom cleaning quote in Austin, TX today"
       />
 
       {/* Contact Info & Form */}
@@ -174,8 +178,9 @@ const ContactPage = () => {
             <ContactInfo>
               <InfoTitle>Get In Touch With Austin's Top Cleaning Service</InfoTitle>
               <InfoText>
-                Questions about our cleaning services or ready to schedule your residential, move-in/out, or post-construction cleaning in Austin, TX? We'd love to hear from you! Contact us
-                using any of the methods below, and we'll respond quickly with a free custom quote.
+                Questions about our cleaning services or ready to schedule your residential, move-in/out, or
+                post-construction cleaning in Austin, TX? We'd love to hear from you! Contact us using any of the
+                methods below, and we'll respond quickly with a free custom quote.
               </InfoText>
 
               <ContactDetails>
@@ -218,6 +223,11 @@ const ContactPage = () => {
                 <ContactPhoto src={contactImage} alt="Contact us for professional cleaning services" />
               </PhotoSection>
             </ContactInfo>
+
+            {/* Photo above the form on phones; hidden elsewhere */}
+            <MobilePhotoSection>
+              <ContactPhoto src={contactImage} alt="Contact us for professional cleaning services" />
+            </MobilePhotoSection>
 
             {/* Contact Form */}
             <FormContainer>

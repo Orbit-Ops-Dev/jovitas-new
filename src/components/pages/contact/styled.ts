@@ -1,31 +1,8 @@
 import styled from 'styled-components';
 
-// Contact Grid Layout
-export const ContactGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: ${({ theme }) => theme.spacing['4xl']};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing['2xl']};
-
-    /* Reorder: Form first, then contact info */
-    > *:first-child {
-      order: 2;
-    }
-    > *:last-child {
-      order: 1;
-    }
-  }
-`;
-
 // Contact Info Section Styles
-export const ContactInfo = styled.div`
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    display: none;
-  }
-`;
+// (ContactGrid is defined at the bottom — it references these by component.)
+export const ContactInfo = styled.div``;
 
 export const InfoTitle = styled.h2`
   font-family: ${({ theme }) => theme.typography.fontFamily.heading};
@@ -83,6 +60,22 @@ export const PhoneLink = styled.a`
 export const PhotoSection = styled.div`
   padding-top: ${({ theme }) => theme.spacing.xl};
   border-top: 1px solid ${({ theme }) => theme.colors.border};
+
+  /* Below mobile the photo moves above the form (see MobilePhotoSection). */
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: none;
+  }
+`;
+
+/* Below mobile the photo is lifted out of ContactInfo and shown above the
+   form instead (PhotoSection is hidden at that width). Stays display:none
+   on wider screens, so it never becomes a grid item there. */
+export const MobilePhotoSection = styled.div`
+  display: none;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: block;
+  }
 `;
 
 export const ContactPhoto = styled.img`
@@ -111,6 +104,56 @@ export const FormContainer = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: ${({ theme }) => theme.spacing.lg};
+  }
+`;
+
+// Contact Grid Layout
+// Defined last so it can target the components above by reference rather than
+// by :first-child / :last-child, which break whenever a child is added.
+export const ContactGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: ${({ theme }) => theme.spacing['4xl']};
+
+  /* Single column: form first, contact info below it. */
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing['2xl']};
+
+    ${FormContainer} {
+      order: 1;
+    }
+    ${ContactInfo} {
+      order: 2;
+    }
+  }
+
+  /* Phones: flatten ContactInfo so its children can be ordered individually,
+     giving photo → contact details → form → headline + intro copy. This puts
+     the tap-to-call number above the form instead of below it. */
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    ${ContactInfo} {
+      display: contents;
+    }
+
+    ${MobilePhotoSection} {
+      order: 1;
+    }
+    ${ContactDetails} {
+      order: 2;
+      margin-bottom: 0;
+    }
+    ${FormContainer} {
+      order: 3;
+    }
+    ${InfoTitle} {
+      order: 4;
+      margin-bottom: 0;
+    }
+    ${InfoText} {
+      order: 5;
+      margin-bottom: 0;
+    }
   }
 `;
 
