@@ -9,6 +9,10 @@ export const theme = {
     secondary: '#6CB4A8', // Secondary color
     secondaryDark: '#5A9D91', // Secondary dark
 
+    // Accent Brand Colors
+    accent: '#ff68b5', // Logo pink - accent details, social icons, decorative marks
+    accentRgb: '255, 104, 182', // Channels for rgba() - keep in sync with accent
+
     // Neutrals
     dark: '#2C2C2C', // Headings, dark text
     gray: '#666666', // Body text

@@ -57,7 +57,7 @@ export const HamburgerButton = styled.button<{ $isOpen: boolean }>`
   span {
     width: 25px;
     height: 3px;
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.accent};
     transition: all 0.3s ease-in-out;
     position: absolute;
     left: 5px;
@@ -149,7 +149,7 @@ export const SocialLinks = styled.div`
 `;
 
 export const SocialLink = styled.a`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.accent};
   font-size: ${({ theme }) => theme.typography.fontSize.lg};
   transition: all ${({ theme }) => theme.transitions.fast};
   display: flex;

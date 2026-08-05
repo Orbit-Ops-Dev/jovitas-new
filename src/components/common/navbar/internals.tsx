@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { Nav, NavContainer, Logo, HamburgerButton, NavMenu, NavItem, NavLink, SocialLinks, SocialLink } from './styled';
-import whiteLogo from '../../../assets/logo-white.png';
+import whiteLogo from '../../../assets/logo-pink-output.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,7 +56,7 @@ const Navbar = () => {
             <FaInstagram />
           </SocialLink>
           <SocialLink
-            href="https://api.whatsapp.com/send/?phone=%2B15126618096&text&type=phone_number&app_absent=0"
+            href="https://api.whatsapp.com/send/?phone=%2B15126589899&text&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"

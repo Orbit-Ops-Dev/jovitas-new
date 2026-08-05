@@ -4,7 +4,9 @@ export const Card = styled.div`
   background: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.spacing['2xl']};
   border-radius: ${({ theme }) => theme.borderRadius.lg};
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px rgba(${({ theme }) => theme.colors.accentRgb}, 0.07),
+    0 1px 3px rgba(${({ theme }) => theme.colors.accentRgb}, 0.06);
   transition: all 0.3s ease;
   height: 100%;
   display: flex;
@@ -18,14 +20,16 @@ export const Card = styled.div`
     top: 10px;
     left: 20px;
     font-size: 60px;
-    color: ${({ theme }) => theme.colors.primary};
-    opacity: 0.1;
+    color: ${({ theme }) => theme.colors.accent};
+    opacity: 0.3;
     font-family: Georgia, serif;
     line-height: 1;
   }
 
   &:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 8px 16px rgba(${({ theme }) => theme.colors.accentRgb}, 0.12),
+      0 2px 6px rgba(${({ theme }) => theme.colors.accentRgb}, 0.08);
     transform: translateY(-4px);
   }
 `;

@@ -27,7 +27,14 @@ export const CarouselWrapper = styled.div`
 
 export const EmblaViewport = styled.div`
   overflow: hidden;
-  width: 100%;
+  /* Breathing room on all four sides so card shadows and the hover lift aren't
+     clipped. Negative margins widen the clip box outward while the padding pulls
+     the content back, so slide positions and layout spacing are unchanged.
+     No explicit width: with border-box it would shrink the content box instead
+     of widening the clip box. Horizontal inset stays under the 24px slide gap so
+     only empty gap is revealed, never the neighbouring card. */
+  padding: 12px 12px 16px;
+  margin: -12px -12px -16px;
 `;
 
 export const EmblaContainer = styled.div<{ $gap: number }>`
