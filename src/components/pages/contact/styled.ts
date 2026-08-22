@@ -310,3 +310,60 @@ export const RadioLabel = styled.label`
 export const OtherServiceInput = styled(Input)`
   margin-top: ${({ theme }) => theme.spacing.sm};
 `;
+
+// Referral Promo Callout
+// Rendered inside FormContainer, above the form title, so it reinforces the
+// offer at the point of conversion without disturbing the ContactGrid ordering.
+export const ReferralCallout = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: ${({ theme }) => theme.spacing.md};
+  padding: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  border: 1px solid rgba(${({ theme }) => theme.colors.accentRgb}, 0.35);
+  border-left: 4px solid ${({ theme }) => theme.colors.accent};
+  border-radius: ${({ theme }) => theme.borderRadius.md};
+  background-color: rgba(${({ theme }) => theme.colors.accentRgb}, 0.07);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    gap: ${({ theme }) => theme.spacing.sm};
+    padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.sm};
+  }
+`;
+
+export const ReferralIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.white};
+  font-size: ${({ theme }) => theme.typography.fontSize.md};
+`;
+
+export const ReferralContent = styled.div``;
+
+export const ReferralTitle = styled.h3`
+  font-family: ${({ theme }) => theme.typography.fontFamily.heading};
+  font-size: ${({ theme }) => theme.typography.fontSize.md};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
+  color: ${({ theme }) => theme.colors.textPrimary};
+  margin: 0 0 ${({ theme }) => theme.spacing.xs};
+`;
+
+export const ReferralText = styled.p`
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  line-height: ${({ theme }) => theme.typography.lineHeight.normal};
+  color: ${({ theme }) => theme.colors.textSecondary};
+  margin: 0;
+`;
+
+export const ReferralFineprint = styled.p`
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  line-height: ${({ theme }) => theme.typography.lineHeight.normal};
+  color: ${({ theme }) => theme.colors.textLight};
+  margin: ${({ theme }) => theme.spacing.xs} 0 0;
+`;

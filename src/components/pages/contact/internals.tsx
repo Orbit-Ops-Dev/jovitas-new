@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
+import { FaGift } from 'react-icons/fa';
 import Section from '../../common/section/Section';
 import Container from '../../common/container/internals';
 import Button from '../../common/button/internals';
@@ -39,7 +40,14 @@ import {
   Radio,
   RadioLabel,
   OtherServiceInput,
+  ReferralCallout,
+  ReferralIcon,
+  ReferralContent,
+  ReferralTitle,
+  ReferralText,
+  ReferralFineprint,
 } from './styled';
+import { referralPromo } from '../../common/announcement-bar/data';
 
 const ContactPage = () => {
   const [searchParams] = useSearchParams();
@@ -231,6 +239,17 @@ const ContactPage = () => {
 
             {/* Contact Form */}
             <FormContainer>
+              <ReferralCallout>
+                <ReferralIcon>
+                  <FaGift aria-hidden="true" />
+                </ReferralIcon>
+                <ReferralContent>
+                  <ReferralTitle>{referralPromo.headline}</ReferralTitle>
+                  <ReferralText>{referralPromo.detail}</ReferralText>
+                  <ReferralFineprint>{referralPromo.fineprint}</ReferralFineprint>
+                </ReferralContent>
+              </ReferralCallout>
+
               <FormTitle>Contact Us</FormTitle>
               <FormDescription>Fill out the form below and we'll get back to you as soon as possible</FormDescription>
 
