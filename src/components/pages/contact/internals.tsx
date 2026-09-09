@@ -40,6 +40,7 @@ import {
   Radio,
   RadioLabel,
   OtherServiceInput,
+  HoneypotField,
   ReferralCallout,
   ReferralIcon,
   ReferralContent,
@@ -59,6 +60,8 @@ const ContactPage = () => {
     otherService: '',
     cleaningFrequency: '',
     message: '',
+    // Honeypot — always empty for real users; a filled value means a bot.
+    website: '',
   });
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
@@ -86,6 +89,25 @@ const ContactPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Spam honeypot: real users never see or fill the `website` field, so if it
+    // has a value we treat the submission as a bot. Show success (so the bot
+    // doesn't retry) and silently skip the email send.
+    if (formData.website) {
+      setFormStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        services: [],
+        otherService: '',
+        cleaningFrequency: '',
+        message: '',
+        website: '',
+      });
+      return;
+    }
+
     setFormStatus('submitting');
 
     try {
@@ -113,6 +135,7 @@ const ContactPage = () => {
         otherService: '',
         cleaningFrequency: '',
         message: '',
+        website: '',
       });
     } catch (error) {
       console.error('Form submission failed:', error);
@@ -262,6 +285,20 @@ const ContactPage = () => {
               )}
 
               <Form onSubmit={handleSubmit}>
+                {/* Honeypot: hidden from real users; only bots fill it. Do not remove. */}
+                <HoneypotField aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleInputChange}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </HoneypotField>
+
                 <FormGroup>
                   <Label htmlFor="name">Full Name *</Label>
                   <Input

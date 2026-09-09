@@ -311,6 +311,18 @@ export const OtherServiceInput = styled(Input)`
   margin-top: ${({ theme }) => theme.spacing.sm};
 `;
 
+// Honeypot: a decoy field for spam bots. Bots fill every input they find, so a
+// non-empty value flags the submission as spam (see handleSubmit). Pushed
+// off-screen rather than display:none — some bots skip display:none fields —
+// and hidden from keyboard and screen readers so no real user ever fills it.
+export const HoneypotField = styled.div`
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+`;
+
 // Referral Promo Callout
 // Rendered inside FormContainer, above the form title, so it reinforces the
 // offer at the point of conversion without disturbing the ContactGrid ordering.
