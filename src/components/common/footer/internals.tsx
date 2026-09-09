@@ -26,6 +26,8 @@ const Footer: React.FC = () => {
             <FooterLink to="/services">Services</FooterLink>
             <FooterLink to="/about">About Us</FooterLink>
             <FooterLink to="/contact">Contact</FooterLink>
+            <FooterLink to="/privacy">Privacy Policy</FooterLink>
+            <FooterLink to="/terms">Terms of Service</FooterLink>
           </FooterColumn>
 
           {/* Services Column */}
