@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { Analytics } from '@vercel/analytics/react';
 import theme from './styles/theme';
 import GlobalStyles from './styles/globalStyles';
 import Navbar from './components/common/navbar/internals';
@@ -58,6 +59,7 @@ const App: React.FC = () => {
         </Suspense>
         <Footer />
       </Router>
+      <Analytics />
     </ThemeProvider>
   );
 };
