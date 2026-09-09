@@ -3,9 +3,11 @@ import { useSearchParams } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { FaGift } from 'react-icons/fa';
 import Section from '../../common/section/Section';
+import SectionTitle from '../../common/section/SectionTitle';
 import Container from '../../common/container/internals';
 import Button from '../../common/button/internals';
 import HeroSection from '../../common/hero/internals';
+import ServiceAreaMap from './map/internals';
 import contactImage from '../../../assets/home/contact.jpg';
 import {
   ContactGrid,
@@ -438,6 +440,16 @@ const ContactPage = () => {
               </Form>
             </FormContainer>
           </ContactGrid>
+        </Container>
+      </Section>
+
+      {/* Service Area Map */}
+      <Section variant="light">
+        <Container>
+          <SectionTitle subtitle="Serving the Greater Austin area and surrounding communities">
+            Areas We Service
+          </SectionTitle>
+          <ServiceAreaMap />
         </Container>
       </Section>
     </>
