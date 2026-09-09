@@ -14,6 +14,9 @@ export const serviceAreas: ServiceArea[] = [
   { name: 'Cedar Park', position: [30.5052, -97.8203] },
   { name: 'Pflugerville', position: [30.4394, -97.62] },
   { name: 'Georgetown', position: [30.6333, -97.6778] },
-  { name: 'Kyle', position: [29.9891, -97.8772] },
-  { name: 'Buda', position: [30.0855, -97.8403] },
+  { name: 'Lakeway', position: [30.3644, -97.9789] },
+  { name: 'Manor', position: [30.3407, -97.5567] },
+  { name: 'Elgin', position: [30.3494, -97.3703] },
+  { name: 'Bastrop', position: [30.1105, -97.3153] },
+  { name: 'Taylor', position: [30.5707, -97.4092] },
 ];

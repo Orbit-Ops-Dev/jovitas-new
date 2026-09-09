@@ -73,8 +73,8 @@ const ServiceAreaMap = ({ height = '450px' }: ServiceAreaMapProps) => {
       </StyledMapContainer>
 
       <MapCaption>
-        We proudly serve the Greater Austin area, including Round Rock, Cedar Park, Pflugerville, Georgetown, Kyle, and
-        Buda. Not sure if you're in range? Just ask!
+        We proudly serve the Greater Austin area, including Round Rock, Cedar Park, Pflugerville, Georgetown, Lakeway,
+        Manor, Elgin, Bastrop, and Taylor. Not sure if you're in range? Just ask!
       </MapCaption>
     </MapWrapper>
   );
