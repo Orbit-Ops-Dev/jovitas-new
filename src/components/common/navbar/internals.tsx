@@ -1,12 +1,46 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { Nav, NavContainer, Logo, HamburgerButton, NavMenu, NavItem, NavLink, SocialLinks, SocialLink } from './styled';
 import whiteLogo from '../../../assets/logo-pink-output.png';
 
+// Below this scroll position the navbar always stays visible (roughly its own height).
+const REVEAL_THRESHOLD = 80;
+// Ignore tiny scroll jitters so the bar doesn't flicker.
+const SCROLL_DELTA = 8;
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const location = useLocation();
+
+  // Hide on scroll-down, reveal on scroll-up (the CSS restricts the effect to mobile).
+  useEffect(() => {
+    lastScrollY.current = window.scrollY;
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const currentY = window.scrollY;
+        const diff = currentY - lastScrollY.current;
+
+        if (currentY < REVEAL_THRESHOLD) {
+          setIsHidden(false);
+        } else if (Math.abs(diff) > SCROLL_DELTA) {
+          setIsHidden(diff > 0);
+        }
+
+        lastScrollY.current = currentY;
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { label: 'Home', path: '/' },
@@ -16,7 +50,7 @@ const Navbar = () => {
   ];
 
   return (
-    <Nav>
+    <Nav $hidden={isHidden && !isMenuOpen}>
       <NavContainer>
         <Logo>
           <img src={whiteLogo} alt="Jovita's Cleaning Service" style={{ height: '120px', width: 'auto' }} />

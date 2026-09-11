@@ -150,6 +150,11 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  /* Offset hash-scroll targets so the sticky navbar doesn't clip their headings */
+  section[id] {
+    scroll-margin-top: calc(${({ theme }) => theme.layout.navHeight} + ${({ theme }) => theme.spacing.md});
+  }
+
   /* Root container */
   #root {
     min-height: 100vh;

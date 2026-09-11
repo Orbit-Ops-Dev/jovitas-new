@@ -124,6 +124,10 @@ export const theme = {
     padding: '1rem',
   },
 
+  layout: {
+    navHeight: '80px',
+  },
+
   zIndex: {
     base: 1,
     dropdown: 100,

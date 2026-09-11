@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-export const Nav = styled.nav`
+export const Nav = styled.nav<{ $hidden: boolean }>`
   position: sticky;
   top: 0;
   background-color: ${({ theme }) => theme.colors.primary};
   box-shadow: ${({ theme }) => theme.shadows.md};
-  z-index: 1000;
+  z-index: ${({ theme }) => theme.zIndex.sticky};
+  transition: transform ${({ theme }) => theme.transitions.normal};
+
+  /* Auto-hide on scroll-down / reveal on scroll-up — mobile only. */
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    transform: ${({ $hidden }) => ($hidden ? 'translateY(-100%)' : 'translateY(0)')};
+  }
 `;
 
 export const NavContainer = styled.div`
@@ -16,7 +22,7 @@ export const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: ${({ theme }) => theme.layout.navHeight};
 `;
 
 export const Logo = styled.div`
