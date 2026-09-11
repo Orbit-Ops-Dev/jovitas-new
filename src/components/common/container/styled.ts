@@ -6,17 +6,14 @@ export const StyledContainer = styled.div<{
 }>`
   max-width: ${({ $maxWidth }) => $maxWidth};
   margin: 0 auto;
-  padding: ${({ $noPadding, theme }) =>
-    $noPadding ? '0' : `0 ${theme.spacing.xl}`};
+  padding: ${({ $noPadding, theme }) => ($noPadding ? '0' : `0 ${theme.spacing.xl}`)};
   width: 100%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: ${({ $noPadding, theme }) =>
-      $noPadding ? '0' : `0 ${theme.spacing.lg}`};
+    padding: ${({ $noPadding, theme }) => ($noPadding ? '0' : `0 ${theme.spacing.lg}`)};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: ${({ $noPadding, theme }) =>
-      $noPadding ? '0' : `0 ${theme.spacing.md}`};
+    padding: ${({ $noPadding, theme }) => ($noPadding ? '0' : `0 ${theme.spacing.md}`)};
   }
 `;

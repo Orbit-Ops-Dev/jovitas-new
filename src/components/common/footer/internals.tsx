@@ -23,9 +23,9 @@ const Footer: React.FC = () => {
           <FooterColumn>
             <FooterTitle>Quick Links</FooterTitle>
             <FooterLink to="/">Home</FooterLink>
-            <FooterLink to="/services">Services</FooterLink>
-            <FooterLink to="/about">About Us</FooterLink>
-            <FooterLink to="/contact">Contact</FooterLink>
+            <FooterLink to="/#services">Services</FooterLink>
+            <FooterLink to="/#about">About Us</FooterLink>
+            <FooterLink to="/#contact">Contact</FooterLink>
             <FooterLink to="/privacy">Privacy Policy</FooterLink>
             <FooterLink to="/terms">Terms of Service</FooterLink>
           </FooterColumn>
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
           <FooterColumn>
             <FooterTitle>Our Services</FooterTitle>
             {services.map(service => (
-              <FooterLink key={service.id} to={`/services#${service.slug}`}>
+              <FooterLink key={service.id} to={`/#${service.slug}`}>
                 {service.title}
               </FooterLink>
             ))}

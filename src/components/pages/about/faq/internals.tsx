@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { FAQAccordionProps } from './types';
-import { FaqAnswer, FaqAnswerContent, FaqAnswerList, FaqAnswerListItem, FaqIcon, FaqItem, FaqList, FaqQuestion } from './styled';
+import {
+  FaqAnswer,
+  FaqAnswerContent,
+  FaqAnswerList,
+  FaqAnswerListItem,
+  FaqIcon,
+  FaqItem,
+  FaqList,
+  FaqQuestion,
+} from './styled';
 
 const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs }) => {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);

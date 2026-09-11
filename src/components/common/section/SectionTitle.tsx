@@ -66,12 +66,7 @@ const Subtitle = styled.p`
   }
 `;
 
-const SectionTitle: React.FC<SectionTitleProps> = ({
-  children,
-  align = 'center',
-  subtitle,
-  variant = 'h2',
-}) => {
+const SectionTitle: React.FC<SectionTitleProps> = ({ children, align = 'center', subtitle, variant = 'h2' }) => {
   return (
     <TitleWrapper $align={align}>
       <Title as={variant} $variant={variant}>

@@ -4,7 +4,8 @@ export const faqs: FAQ[] = [
   {
     id: '1',
     question: 'What areas do you serve?',
-    answer: 'We proudly serve Austin and surrounding communities. If you don’t see your area listed, reach out – we may still be able to help.',
+    answer:
+      'We proudly serve Austin and surrounding communities. If you don’t see your area listed, reach out – we may still be able to help.',
     answerList: [
       'Elgin',
       'Manor',

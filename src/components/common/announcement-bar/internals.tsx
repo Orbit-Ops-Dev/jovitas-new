@@ -42,7 +42,7 @@ const AnnouncementBar = () => {
           </span>
         </Message>
 
-        <CTA to={`/contact?prefillMessage=${encodeURIComponent(promo.ctaPrefillMessage)}`}>
+        <CTA to={`/?prefillMessage=${encodeURIComponent(promo.ctaPrefillMessage)}#contact`}>
           {promo.ctaLabel}
           <FaArrowRight aria-hidden="true" />
         </CTA>

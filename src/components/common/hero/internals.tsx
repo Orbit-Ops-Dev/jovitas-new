@@ -1,7 +1,16 @@
 import React from 'react';
 import Container from '../container/internals';
 import { HeroSectionProps } from './types';
-import { Hero, HeroVideo, HeroImage, HeroOverlay, HeroContent, HeroTextContainer, HeroTitle, HeroSubtitle } from './styled';
+import {
+  Hero,
+  HeroVideo,
+  HeroImage,
+  HeroOverlay,
+  HeroContent,
+  HeroTextContainer,
+  HeroTitle,
+  HeroSubtitle,
+} from './styled';
 
 const HeroSection: React.FC<HeroSectionProps> = ({
   title,

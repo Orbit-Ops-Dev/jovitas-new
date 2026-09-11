@@ -24,7 +24,7 @@ export const Logo = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
-  
+
   img {
     object-fit: contain;
   }

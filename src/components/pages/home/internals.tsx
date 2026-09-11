@@ -3,100 +3,107 @@ import Section from '../../common/section/Section.tsx';
 import Container from '../../common/container/internals.tsx';
 import Button from '../../common/button/internals.tsx';
 import Carousel from './carousel/internals.tsx';
-import ServicePreviewCard from './service-preview/internals.tsx';
 import HeroSection from '../../common/hero/internals.tsx';
 import heroImage from '../../../assets/home/hero.jpg';
 import SectionTitle from '../../common/section/SectionTitle.tsx';
-import { services } from '../services/data.ts';
-import { HeroButtons, StyledLink, SectionHeader, SectionDescription, CarouselWrapper, CTAContainer } from './styled.ts';
+import ServiceDetailCard from '../services/card/internals.tsx';
+import { servicesDetailed } from '../services/data.ts';
+import { ServicesGrid } from '../services/styled.ts';
+import { HeroButtons, StyledLink, SectionHeader, SectionDescription, CarouselWrapper } from './styled.ts';
 import { testimonials } from './testimonials/data.ts';
 import TestimonialCard from './testimonials/internals.tsx';
+import AboutSection from '../about/internals.tsx';
+import ContactSection from '../contact/internals.tsx';
 
 const HomePage = () => {
   useEffect(() => {
     // Update page title for SEO
     document.title = "Jovita's Cleaning Service - Professional Cleaning in Austin, TX | Residential & Commercial";
-    
+
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Professional cleaning services in Austin, TX. Expert residential cleaning, move-in/out cleaning, and post-construction cleaning. Free quotes. Call (512) 658-9899.');
+      metaDescription.setAttribute(
+        'content',
+        'Professional cleaning services in Austin, TX. Expert residential cleaning, move-in/out cleaning, and post-construction cleaning. Free quotes. Call (512) 658-9899.'
+      );
     }
 
     // Add comprehensive structured data for home page
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "@id": "https://jovitascleaningservice.com",
-      "name": "Jovita's Cleaning Service",
-      "image": "https://jovitascleaningservice.com/logo-pink-output.png",
-      "url": "https://jovitascleaningservice.com",
-      "telephone": "(512) 658-9899",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Austin",
-        "addressRegion": "TX",
-        "addressCountry": "US"
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      '@id': 'https://jovitascleaningservice.com',
+      name: "Jovita's Cleaning Service",
+      image: 'https://jovitascleaningservice.com/logo-pink-output.png',
+      url: 'https://jovitascleaningservice.com',
+      telephone: '(512) 658-9899',
+      priceRange: '$$',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Austin',
+        addressRegion: 'TX',
+        addressCountry: 'US',
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 30.2672,
-        "longitude": -97.7431
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 30.2672,
+        longitude: -97.7431,
       },
-      "areaServed": [
+      areaServed: [
         {
-          "@type": "City",
-          "name": "Austin",
-          "sameAs": "https://en.wikipedia.org/wiki/Austin,_Texas"
-        }
+          '@type': 'City',
+          name: 'Austin',
+          sameAs: 'https://en.wikipedia.org/wiki/Austin,_Texas',
+        },
       ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Cleaning Services",
-        "itemListElement": [
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Cleaning Services',
+        itemListElement: [
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Residential Cleaning",
-              "description": "Professional house cleaning services for Austin homes"
-            }
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Residential Cleaning',
+              description: 'Professional house cleaning services for Austin homes',
+            },
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Move-In/Move-Out Cleaning",
-              "description": "Thorough cleaning for moving transitions in Austin, TX"
-            }
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Move-In/Move-Out Cleaning',
+              description: 'Thorough cleaning for moving transitions in Austin, TX',
+            },
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Post-Construction Cleaning",
-              "description": "Deep cleaning after construction or renovation projects"
-            }
-          }
-        ]
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Post-Construction Cleaning',
+              description: 'Deep cleaning after construction or renovation projects',
+            },
+          },
+        ],
       },
-      "openingHoursSpecification": [
+      openingHoursSpecification: [
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "08:00",
-          "closes": "17:30"
-        }
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '08:00',
+          closes: '17:30',
+        },
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "50"
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '5',
+        reviewCount: '50',
       },
-      "description": "Jovita's Cleaning Service provides professional residential cleaning, move-in/out cleaning, and post-construction cleaning services throughout Austin, TX. Trusted, reliable, and thorough cleaning solutions."
+      description:
+        "Jovita's Cleaning Service provides professional residential cleaning, move-in/out cleaning, and post-construction cleaning services throughout Austin, TX. Trusted, reliable, and thorough cleaning solutions.",
     });
     document.head.appendChild(script);
 
@@ -118,7 +125,7 @@ const HomePage = () => {
         centered={true}
       >
         <HeroButtons>
-          <StyledLink to="/contact">
+          <StyledLink to="/#contact">
             <Button variant="primary" size="large">
               Contact
             </Button>
@@ -148,31 +155,30 @@ const HomePage = () => {
         </Container>
       </Section>
 
-      {/* Services Carousel */}
-      <Section variant="secondary">
+      {/* Services */}
+      <Section id="services" variant="secondary">
         <Container>
           <SectionHeader>
             <SectionTitle>Exceptional Cleaning Services in Austin, TX</SectionTitle>
             <SectionDescription>
-              Top-tier residential cleaning, move-in/out cleaning, and post-construction cleaning for Austin homes and businesses, expertly handled by our professional team
+              Top-tier residential cleaning, move-in/out cleaning, and post-construction cleaning for Austin homes and
+              businesses, expertly handled by our professional team
             </SectionDescription>
           </SectionHeader>
 
-          <CarouselWrapper>
-            <Carousel itemsPerView={2} gap={24} autoPlay={false} showDots={false} showArrows={true} infinite={true}>
-              {services.map(service => (
-                <ServicePreviewCard key={service.id} service={service} />
-              ))}
-            </Carousel>
-          </CarouselWrapper>
-
-          <CTAContainer>
-            <StyledLink to="/services">
-              <Button variant="primary">View All Services</Button>
-            </StyledLink>
-          </CTAContainer>
+          <ServicesGrid>
+            {servicesDetailed.map(service => (
+              <ServiceDetailCard key={service.id} service={service} />
+            ))}
+          </ServicesGrid>
         </Container>
       </Section>
+
+      {/* About: our approach, what sets us apart, FAQ */}
+      <AboutSection />
+
+      {/* Contact */}
+      <ContactSection />
     </>
   );
 };

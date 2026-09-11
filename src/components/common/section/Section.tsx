@@ -13,17 +13,14 @@ const StyledSection = styled.section<{
   $noPadding: boolean;
 }>`
   width: 100%;
-  padding: ${({ $noPadding, theme }) =>
-    $noPadding ? '0' : `${theme.spacing['4xl']} ${theme.spacing.xl}`};
+  padding: ${({ $noPadding, theme }) => ($noPadding ? '0' : `${theme.spacing['4xl']} ${theme.spacing.xl}`)};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: ${({ $noPadding, theme }) =>
-      $noPadding ? '0' : `${theme.spacing['3xl']} ${theme.spacing.lg}`};
+    padding: ${({ $noPadding, theme }) => ($noPadding ? '0' : `${theme.spacing['3xl']} ${theme.spacing.lg}`)};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: ${({ $noPadding, theme }) =>
-      $noPadding ? '0' : `${theme.spacing['2xl']} ${theme.spacing.md}`};
+    padding: ${({ $noPadding, theme }) => ($noPadding ? '0' : `${theme.spacing['2xl']} ${theme.spacing.md}`)};
   }
 
   /* Variant styles */
@@ -53,12 +50,7 @@ const StyledSection = styled.section<{
   }}
 `;
 
-const Section: React.FC<SectionProps> = ({
-  children,
-  variant = 'light',
-  id,
-  noPadding = false,
-}) => {
+const Section: React.FC<SectionProps> = ({ children, variant = 'light', id, noPadding = false }) => {
   return (
     <StyledSection $variant={variant} $noPadding={noPadding} id={id}>
       {children}

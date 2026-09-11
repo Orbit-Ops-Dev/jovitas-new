@@ -10,9 +10,6 @@ import AnnouncementBar from './components/common/announcement-bar/internals';
 
 // Lazy load page components for better code splitting
 const HomePage = lazy(() => import('./components/pages/home/internals'));
-const ServicesPage = lazy(() => import('./components/pages/services/internals'));
-const AboutPage = lazy(() => import('./components/pages/about/internals'));
-const ContactPage = lazy(() => import('./components/pages/contact/internals'));
 const PrivacyPage = lazy(() => import('./components/pages/privacy/internals'));
 const TermsPage = lazy(() => import('./components/pages/terms/internals'));
 const NotFoundPage = lazy(() => import('./components/common/not-found/internals'));
@@ -53,9 +50,6 @@ const App: React.FC = () => {
         <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="*" element={<NotFoundPage />} />

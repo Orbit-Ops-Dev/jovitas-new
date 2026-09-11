@@ -6,7 +6,6 @@ import Section from '../../common/section/Section';
 import SectionTitle from '../../common/section/SectionTitle';
 import Container from '../../common/container/internals';
 import Button from '../../common/button/internals';
-import HeroSection from '../../common/hero/internals';
 import ServiceAreaMap from './map/internals';
 import contactImage from '../../../assets/home/contact.jpg';
 import {
@@ -52,7 +51,7 @@ import {
 } from './styled';
 import { referralPromo } from '../../common/announcement-bar/data';
 
-const ContactPage = () => {
+const ContactSection = () => {
   const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: '',
@@ -145,67 +144,20 @@ const ContactPage = () => {
     }
   };
 
-  // SEO and prefill setup
+  // Prefill the message field when linked from a promo CTA (?prefillMessage=...)
   useEffect(() => {
-    // Update page title for SEO
-    document.title = "Contact Us - Jovita's Cleaning Service | Free Quote Austin TX";
-
-    // Update meta description
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        'content',
-        "Contact Jovita's Cleaning Service for a free quote. Professional cleaning services in Austin, TX. Call (512) 658-9899 or fill out our contact form."
-      );
-    }
-
-    // Add structured data for contact page
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'ContactPage',
-      name: "Contact Jovita's Cleaning Service",
-      description: "Get in touch with Jovita's Cleaning Service for professional cleaning services in Austin, TX",
-      url: 'https://jovitascleaningservice.com/contact',
-      mainEntity: {
-        '@type': 'LocalBusiness',
-        name: "Jovita's Cleaning Service",
-        telephone: '(512) 658-9899',
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Austin',
-          addressRegion: 'TX',
-          addressCountry: 'US',
-        },
-      },
-    });
-    document.head.appendChild(script);
-
-    // Prefill message if provided via query params
     const prefillMessage = searchParams.get('prefillMessage');
     if (prefillMessage) {
       setFormData(prev => ({ ...prev, message: prefillMessage }));
     }
-
-    return () => {
-      // Cleanup structured data on unmount
-      const scripts = document.querySelectorAll('script[type="application/ld+json"]');
-      scripts.forEach(s => s.remove());
-    };
   }, [searchParams]);
 
   return (
     <>
-      {/* Hero Section */}
-      <HeroSection
-        title="Contact Jovita's Cleaning Service"
-        subtitle="Get your free consultation and custom cleaning quote in Austin, TX today"
-      />
-
       {/* Contact Info & Form */}
-      <Section variant="secondary">
+      <Section id="contact">
         <Container>
+          <SectionTitle align="center">Contact Us</SectionTitle>
           <ContactGrid>
             {/* Contact Information */}
             <ContactInfo>
@@ -456,4 +408,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default ContactSection;
