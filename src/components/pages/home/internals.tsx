@@ -37,6 +37,7 @@ const HomePage = () => {
       '@type': 'ProfessionalService',
       '@id': 'https://jovitascleaningservice.com',
       name: "Jovita's Cleaning Service",
+      legalName: "Jovita's Cleaning Services LLC",
       image: 'https://jovitascleaningservice.com/logo-pink-output.png',
       url: 'https://jovitascleaningservice.com',
       telephone: '(512) 658-9899',

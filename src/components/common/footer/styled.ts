@@ -12,7 +12,7 @@ export const FooterWrapper = styled.footer`
 `;
 
 export const FooterContainer = styled.div`
-  max-width: 1200px;
+  max-width: ${({ theme }) => theme.container.maxWidth};
   margin: 0 auto;
 `;
 
@@ -29,57 +29,35 @@ export const FooterMain = styled.div`
   }
 `;
 
-export const FooterLeft = styled.div`
+export const FooterBrand = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.lg};
-`;
+  align-items: flex-start;
+  text-align: left;
+  gap: ${({ theme }) => theme.spacing.sm};
+  flex: 1.3;
+  max-width: 260px;
 
-export const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
+  /* Matches BrandMark in the navbar. */
+  img {
+    height: 64px;
+    width: auto;
+    object-fit: contain;
+  }
 
-export const Logo = styled.div`
-  width: 60px;
-  height: 60px;
-  background-color: ${({ theme }) => theme.colors.primary};
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-
-  svg {
-    width: 40px;
-    height: 40px;
-    fill: white;
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    align-items: center;
+    text-align: center;
+    max-width: 280px;
   }
 `;
 
-export const SocialLinks = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing.md};
-`;
-
-export const SocialLink = styled.a`
-  color: ${({ theme }) => theme.colors.gray300};
-  font-size: ${({ theme }) => theme.typography.fontSize['2xl']};
-  transition: all ${({ theme }) => theme.transitions.fast};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.white};
-    background-color: ${({ theme }) => theme.colors.primary};
-    transform: translateY(-3px);
-  }
+export const FooterBrandName = styled.p`
+  font-family: ${({ theme }) => theme.typography.fontFamily.heading};
+  font-size: ${({ theme }) => theme.typography.fontSize.base};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
+  color: ${({ theme }) => theme.colors.white};
+  margin: 0;
 `;
 
 export const FooterColumn = styled.div`

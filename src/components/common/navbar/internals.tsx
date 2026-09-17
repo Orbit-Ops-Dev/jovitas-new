@@ -1,8 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
-import { Nav, NavContainer, Logo, HamburgerButton, NavMenu, NavItem, NavLink, SocialLinks, SocialLink } from './styled';
-import whiteLogo from '../../../assets/logo-pink-output.png';
+import {
+  Nav,
+  NavContainer,
+  Logo,
+  BrandMark,
+  BrandText,
+  BrandName,
+  BrandDescriptor,
+  HamburgerButton,
+  NavMenu,
+  NavItem,
+  NavLink,
+  DrawerBrand,
+  DrawerBrandName,
+  DrawerBrandMeta,
+  SocialLinks,
+  SocialLink,
+} from './styled';
+import logoMark from '../../../assets/logo-pink-output.png';
+import { BRAND } from '../../../constants/brand';
 
 // Below this scroll position the navbar always stays visible (roughly its own height).
 const REVEAL_THRESHOLD = 80;
@@ -52,8 +70,15 @@ const Navbar = () => {
   return (
     <Nav $hidden={isHidden && !isMenuOpen}>
       <NavContainer>
-        <Logo>
-          <img src={whiteLogo} alt="Jovita's Cleaning Service" style={{ height: '120px', width: 'auto' }} />
+        {/* The mark is decorative here — the adjacent wordmark carries the accessible name. */}
+        <Logo to="/" aria-label={`${BRAND.legalName}, home`} onClick={() => setIsMenuOpen(false)}>
+          <BrandMark src={logoMark} alt="" />
+          <BrandText>
+            <BrandName>{BRAND.shortName}</BrandName>
+            <BrandDescriptor>
+              {BRAND.descriptor} <span>{BRAND.suffix}</span>
+            </BrandDescriptor>
+          </BrandText>
         </Logo>
 
         <HamburgerButton onClick={() => setIsMenuOpen(!isMenuOpen)} $isOpen={isMenuOpen}>
@@ -70,6 +95,11 @@ const Navbar = () => {
               </NavLink>
             </NavItem>
           ))}
+
+          <DrawerBrand>
+            <DrawerBrandName>{BRAND.legalName}</DrawerBrandName>
+            <DrawerBrandMeta>Austin, TX &middot; Locally owned</DrawerBrandMeta>
+          </DrawerBrand>
         </NavMenu>
 
         <SocialLinks>

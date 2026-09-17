@@ -1,9 +1,13 @@
 import React from 'react';
 import { services } from '../../pages/services/data';
+import logoMark from '../../../assets/logo-pink-output.png';
+import { BRAND } from '../../../constants/brand';
 import {
   FooterWrapper,
   FooterContainer,
   FooterMain,
+  FooterBrand,
+  FooterBrandName,
   FooterColumn,
   FooterTitle,
   FooterText,
@@ -19,6 +23,13 @@ const Footer: React.FC = () => {
     <FooterWrapper>
       <FooterContainer>
         <FooterMain>
+          {/* Brand Section */}
+          <FooterBrand>
+            <img src={logoMark} alt="" />
+            <FooterBrandName>{BRAND.legalName}</FooterBrandName>
+            <FooterText>Locally owned and operated in Austin, TX.</FooterText>
+          </FooterBrand>
+
           {/* Quick Links Section */}
           <FooterColumn>
             <FooterTitle>Quick Links</FooterTitle>
@@ -59,7 +70,9 @@ const Footer: React.FC = () => {
 
         {/* Bottom - Copyright */}
         <FooterBottom>
-          <Copyright>&copy; {currentYear} Jovita's Cleaning Services. All rights reserved.</Copyright>
+          <Copyright>
+            &copy; {currentYear} {BRAND.legalName}. All rights reserved.
+          </Copyright>
         </FooterBottom>
       </FooterContainer>
     </FooterWrapper>

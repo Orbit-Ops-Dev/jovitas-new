@@ -69,6 +69,8 @@ export const theme = {
       heading: "'Montserrat', 'Inter', sans-serif",
     },
     fontSize: {
+      '3xs': '0.5625rem', // 9px - letterspaced micro-labels only
+      '2xs': '0.625rem', // 10px - letterspaced micro-labels only
       xs: '0.75rem', // 12px
       sm: '0.875rem', // 14px
       base: '1rem', // 16px
