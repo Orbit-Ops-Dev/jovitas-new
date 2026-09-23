@@ -7,7 +7,6 @@ import {
   FooterContainer,
   FooterMain,
   FooterBrand,
-  FooterBrandName,
   FooterColumn,
   FooterTitle,
   FooterText,
@@ -26,7 +25,6 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <FooterBrand>
             <img src={logoMark} alt="" />
-            <FooterBrandName>{BRAND.legalName}</FooterBrandName>
             <FooterText>Locally owned and operated in Austin, TX.</FooterText>
           </FooterBrand>
 

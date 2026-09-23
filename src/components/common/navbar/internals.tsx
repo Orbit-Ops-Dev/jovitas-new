@@ -6,9 +6,6 @@ import {
   NavContainer,
   Logo,
   BrandMark,
-  BrandText,
-  BrandName,
-  BrandDescriptor,
   HamburgerButton,
   NavMenu,
   NavItem,
@@ -70,15 +67,10 @@ const Navbar = () => {
   return (
     <Nav $hidden={isHidden && !isMenuOpen}>
       <NavContainer>
-        {/* The mark is decorative here — the adjacent wordmark carries the accessible name. */}
+        {/* The artwork carries the company name, so the img stays decorative and the
+            link's aria-label supplies the accessible name. */}
         <Logo to="/" aria-label={`${BRAND.legalName}, home`} onClick={() => setIsMenuOpen(false)}>
           <BrandMark src={logoMark} alt="" />
-          <BrandText>
-            <BrandName>{BRAND.shortName}</BrandName>
-            <BrandDescriptor>
-              {BRAND.descriptor} <span>{BRAND.suffix}</span>
-            </BrandDescriptor>
-          </BrandText>
         </Logo>
 
         <HamburgerButton onClick={() => setIsMenuOpen(!isMenuOpen)} $isOpen={isMenuOpen}>

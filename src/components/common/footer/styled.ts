@@ -52,14 +52,6 @@ export const FooterBrand = styled.div`
   }
 `;
 
-export const FooterBrandName = styled.p`
-  font-family: ${({ theme }) => theme.typography.fontFamily.heading};
-  font-size: ${({ theme }) => theme.typography.fontSize.base};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
-  color: ${({ theme }) => theme.colors.white};
-  margin: 0;
-`;
-
 export const FooterColumn = styled.div`
   display: flex;
   flex-direction: column;

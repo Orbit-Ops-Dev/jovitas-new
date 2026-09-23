@@ -74,7 +74,7 @@ const ServiceAreaMap = ({ height = '450px' }: ServiceAreaMapProps) => {
 
       <MapCaption>
         We proudly serve the Greater Austin area, including Round Rock, Cedar Park, Pflugerville, Georgetown, Lakeway,
-        Manor, Elgin, Bastrop, and Taylor. Not sure if you're in range? Just ask!
+        Manor, Elgin, Bastrop, Taylor, and Coupland. Not sure if you're in range? Just ask!
       </MapCaption>
     </MapWrapper>
   );

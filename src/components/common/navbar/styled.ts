@@ -22,8 +22,7 @@ export const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* The three flex:1 regions would otherwise butt together once the wordmark fills
-     the logo's third. */
+  /* Keeps the three flex:1 regions from butting together. */
   gap: ${({ theme }) => theme.spacing.md};
   height: ${({ theme }) => theme.layout.navHeight};
 `;
@@ -33,7 +32,6 @@ export const Logo = styled(Link)`
   flex: 1;
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
   flex-shrink: 0;
 `;
 
@@ -47,57 +45,6 @@ export const BrandMark = styled.img`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     height: 36px;
-  }
-`;
-
-export const BrandText = styled.span`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  line-height: 1.05;
-  padding-left: ${({ theme }) => theme.spacing.sm};
-  border-left: 1px solid rgba(${({ theme }) => theme.colors.accentRgb}, 0.35);
-
-  /* Below this there is no room for a wordmark beside the hamburger. */
-  @media (max-width: 360px) {
-    display: none;
-  }
-`;
-
-export const BrandName = styled.span`
-  font-family: ${({ theme }) => theme.typography.fontFamily.heading};
-  font-size: ${({ theme }) => theme.typography.fontSize.lg};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
-  color: ${({ theme }) => theme.colors.white};
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    font-size: ${({ theme }) => theme.typography.fontSize.base};
-  }
-`;
-
-export const BrandDescriptor = styled.span`
-  margin-top: 4px;
-  font-size: ${({ theme }) => theme.typography.fontSize['2xs']};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.accent};
-  white-space: nowrap;
-
-  span {
-    color: rgba(${({ theme }) => theme.colors.accentRgb}, 0.6);
-  }
-
-  /* "LLC" only fits alongside the full nav on wide screens; it still appears in the
-     mobile drawer and the footer. */
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    font-size: ${({ theme }) => theme.typography.fontSize['3xs']};
-
-    span {
-      display: none;
-    }
   }
 `;
 

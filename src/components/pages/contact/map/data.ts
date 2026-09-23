@@ -19,4 +19,5 @@ export const serviceAreas: ServiceArea[] = [
   { name: 'Elgin', position: [30.3494, -97.3703] },
   { name: 'Bastrop', position: [30.1105, -97.3153] },
   { name: 'Taylor', position: [30.5707, -97.4092] },
+  { name: 'Coupland', position: [30.4783, -97.3878] },
 ];
