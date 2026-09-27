@@ -1,4 +1,5 @@
 import { FAQ } from './types';
+import { serviceAreas } from '../../contact/map/data';
 
 export const faqs: FAQ[] = [
   {
@@ -6,17 +7,8 @@ export const faqs: FAQ[] = [
     question: 'What areas do you serve?',
     answer:
       'We proudly serve Austin and surrounding communities. If you don’t see your area listed, reach out – we may still be able to help.',
-    answerList: [
-      'Elgin',
-      'Manor',
-      'North Austin',
-      'Pflugerville',
-      'Round Rock',
-      'Williamson County',
-      'Lakeway',
-      'Hutto',
-      'Taylor',
-    ],
+    // The service-area map is the source of truth for where we clean.
+    answerList: serviceAreas.map(area => area.name),
   },
   {
     id: '2',

@@ -41,7 +41,7 @@ const ServiceAreaMap = ({ height = '450px' }: ServiceAreaMapProps) => {
       <StyledMapContainer center={MAP_CENTER} zoom={9} scrollWheelZoom={false} style={{ height, width: '100%' }}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
         {/* Overall coverage circle */}
@@ -49,8 +49,8 @@ const ServiceAreaMap = ({ height = '450px' }: ServiceAreaMapProps) => {
           center={MAP_CENTER}
           radius={SERVICE_RADIUS}
           pathOptions={{
-            color: '#6CB4A8',
-            fillColor: '#6CB4A8',
+            color: theme.colors.secondary,
+            fillColor: theme.colors.secondary,
             fillOpacity: 0.15,
             weight: 2,
           }}

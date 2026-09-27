@@ -31,7 +31,7 @@ New `VITE_` vars must also be declared in the `ImportMetaEnv` interface in [`src
 
 ## Architecture
 
-Client website for **Jovita's Cleaning Service** (Austin, TX). React 19 + TypeScript + Vite SPA. Four content pages — Home, Services, About, Contact — plus a catch-all 404.
+Client website for **Jovita's Cleaning Service** (Austin, TX). React 19 + TypeScript + Vite SPA. A single-page home (hero, testimonials, services, about/FAQ, contact + service-area map, linked by `/#hash` anchors), plus `/privacy`, `/terms`, and a catch-all 404.
 
 ### Routing
 
@@ -70,15 +70,17 @@ Transient styled-component props use the `$` prefix (e.g. `$variant`, `$size`) t
 
 ### SEO
 
-SEO is hand-rolled, with no helmet-style library. Baseline meta tags, Open Graph, Twitter cards, and canonical URL live in [`index.html`](index.html). Each page then overrides `document.title` and the description meta, and injects page-specific JSON-LD structured data, inside a `useEffect` in its `internals.tsx`.
+SEO is hand-rolled, with no helmet-style library. Baseline meta tags, Open Graph (`public/og-image.jpg`, 1200×630), Twitter cards, canonical URL, and the business `ProfessionalService` JSON-LD live in [`index.html`](index.html). Each page calls `setPageMeta({ title, description, path })` from [`src/utils/seo.ts`](src/utils/seo.ts) in a `useEffect`, which updates the title, description, canonical, and OG/Twitter URL/title/description for that route.
 
-Two things to know before touching this:
-- The cleanup function on those effects removes **every** `script[type="application/ld+json"]` in the document, not just the one it added. It works today only because `index.html` ships no JSON-LD and one page is mounted at a time. Adding global structured data to `index.html` would break it.
+Things to know before touching this:
+- The business JSON-LD in `index.html` is global. Page-level JSON-LD (e.g. the `FAQPage` script in `pages/about/internals.tsx`) must remove **only its own** script on cleanup, never every `script[type="application/ld+json"]`.
+- The SPA rewrite in `vercel.json` serves every path with a 200, so `NotFound` adds a `noindex` robots meta.
+- The service-area map data ([`contact/map/data.ts`](src/components/pages/contact/map/data.ts)) is the source of truth for service areas; the FAQ list is derived from it. The `areaServed` list in `index.html` is hand-copied and must be updated when a city is added to the map.
 - `public/sitemap.xml` lists routes explicitly. Adding a route means updating the sitemap (and `public/robots.txt` / `manifest.json` if relevant).
 
 ### Static data
 
-Service definitions (descriptions, features, slugs) are in [`src/components/pages/services/data.ts`](src/components/pages/services/data.ts). Gallery images are loaded with Vite's `import.meta.glob` (`eager: true`) against `src/assets/services/<category>/`, then sorted by filename — so **filenames determine gallery order**. Dropping an image into one of those folders adds it to the gallery with no code change; renaming reorders it.
+Service definitions (descriptions, features, slugs) are in [`src/components/pages/services/data.ts`](src/components/pages/services/data.ts). Gallery images are loaded with Vite's `import.meta.glob` (`eager: true`) against `src/assets/services/<category>/`, then sorted by filename — so **filenames determine gallery order**. `vite-plugin-image-optimizer` (configured in `vite.config.ts`) recompresses all images at build time; keep source images at or below ~1600px on the long edge. The hero image lives in `public/hero.jpg` so `index.html` can preload it. Dropping an image into one of those folders adds it to the gallery with no code change; renaming reorders it.
 
 ### Contact form
 

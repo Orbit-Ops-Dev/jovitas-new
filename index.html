@@ -18,14 +18,18 @@
     <meta property="og:url" content="https://jovitascleaningservice.com/" />
     <meta property="og:title" content="Jovita's Cleaning Service - Professional Cleaning Solutions" />
     <meta property="og:description" content="Professional residential, commercial, and move-in/out cleaning services. Trusted, reliable, and thorough cleaning for your home or business." />
-    <meta property="og:image" content="https://jovitascleaningservice.com/logo-pink-output.png" />
+    <meta property="og:image" content="https://jovitascleaningservice.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Jovita's Cleaning Service - professional cleaning in Austin, TX" />
+    <meta property="og:site_name" content="Jovita's Cleaning Service" />
     
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://jovitascleaningservice.com/" />
-    <meta property="twitter:title" content="Jovita's Cleaning Service - Professional Cleaning Solutions" />
-    <meta property="twitter:description" content="Professional residential, commercial, and move-in/out cleaning services. Trusted, reliable, and thorough cleaning for your home or business." />
-    <meta property="twitter:image" content="https://jovitascleaningservice.com/logo-pink-output.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://jovitascleaningservice.com/" />
+    <meta name="twitter:title" content="Jovita's Cleaning Service - Professional Cleaning Solutions" />
+    <meta name="twitter:description" content="Professional residential, commercial, and move-in/out cleaning services. Trusted, reliable, and thorough cleaning for your home or business." />
+    <meta name="twitter:image" content="https://jovitascleaningservice.com/og-image.jpg" />
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://jovitascleaningservice.com/" />
@@ -41,9 +45,140 @@
     <!-- Language and Locale -->
     <meta property="og:locale" content="en_US" />
     
-    <!-- Business Schema -->
     <meta name="keywords" content="cleaning service Austin, residential cleaning Austin TX, house cleaning Austin, move-in cleaning Austin, move-out cleaning Austin, post-construction cleaning Austin, professional cleaning Austin, cleaning company Austin" />
     
+    <!-- Business structured data. Global: page-level JSON-LD must remove only its own script. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://jovitascleaningservice.com/#business",
+        "name": "Jovita's Cleaning Service",
+        "legalName": "Jovita's Cleaning Services LLC",
+        "image": "https://jovitascleaningservice.com/og-image.jpg",
+        "logo": "https://jovitascleaningservice.com/logo-pink-output.png",
+        "url": "https://jovitascleaningservice.com/",
+        "telephone": "+1-512-658-9899",
+        "email": "Jovitascleaningatx@gmail.com",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Austin",
+          "addressRegion": "TX",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 30.2672,
+          "longitude": -97.7431
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Austin, TX",
+            "sameAs": "https://en.wikipedia.org/wiki/Austin,_Texas"
+          },
+          {
+            "@type": "City",
+            "name": "Round Rock, TX"
+          },
+          {
+            "@type": "City",
+            "name": "Cedar Park, TX"
+          },
+          {
+            "@type": "City",
+            "name": "Pflugerville, TX"
+          },
+          {
+            "@type": "City",
+            "name": "Georgetown, TX"
+          },
+          {
+            "@type": "City",
+            "name": "Lakeway, TX"
+          },
+          {
+            "@type": "City",
+            "name": "Manor, TX"
+          },
+          {
+            "@type": "City",
+            "name": "Elgin, TX"
+          },
+          {
+            "@type": "City",
+            "name": "Bastrop, TX"
+          },
+          {
+            "@type": "City",
+            "name": "Taylor, TX"
+          },
+          {
+            "@type": "City",
+            "name": "Coupland, TX"
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/jovita.s.cleaning.2025",
+          "https://www.instagram.com/jovitascleaningatx/"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Cleaning Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Residential Cleaning",
+                "description": "Professional house cleaning services for Austin homes"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Move-In/Move-Out Cleaning",
+                "description": "Thorough cleaning for moving transitions in Austin, TX"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Post-Construction Cleaning",
+                "description": "Deep cleaning after construction or renovation projects"
+              }
+            }
+          ]
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "17:30"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "50"
+        },
+        "description": "Jovita's Cleaning Service provides professional residential cleaning, move-in/out cleaning, and post-construction cleaning services throughout Austin, TX. Trusted, reliable, and thorough cleaning solutions."
+      }
+    </script>
+
+    <!-- Hero image is the LCP element; fetch it before the JS bundle renders it -->
+    <link rel="preload" as="image" href="/hero.jpg" fetchpriority="high" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

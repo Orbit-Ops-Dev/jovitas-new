@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { FaGift } from 'react-icons/fa';
@@ -6,7 +6,6 @@ import Section from '../../common/section/Section';
 import SectionTitle from '../../common/section/SectionTitle';
 import Container from '../../common/container/internals';
 import Button from '../../common/button/internals';
-import ServiceAreaMap from './map/internals';
 import contactImage from '../../../assets/home/contact.jpg';
 import {
   ContactGrid,
@@ -48,8 +47,12 @@ import {
   ReferralTitle,
   ReferralText,
   ReferralFineprint,
+  MapPlaceholder,
 } from './styled';
 import { referralPromo } from '../../common/announcement-bar/data';
+
+// Leaflet is heavy and the map sits at the bottom of the page, so load it in its own chunk.
+const ServiceAreaMap = lazy(() => import('./map/internals'));
 
 const ContactSection = () => {
   const [searchParams] = useSearchParams();
@@ -205,13 +208,23 @@ const ContactSection = () => {
               </ContactDetails>
 
               <PhotoSection>
-                <ContactPhoto src={contactImage} alt="Contact us for professional cleaning services" />
+                <ContactPhoto
+                  src={contactImage}
+                  alt="Contact us for professional cleaning services"
+                  loading="lazy"
+                  decoding="async"
+                />
               </PhotoSection>
             </ContactInfo>
 
             {/* Photo above the form on phones; hidden elsewhere */}
             <MobilePhotoSection>
-              <ContactPhoto src={contactImage} alt="Contact us for professional cleaning services" />
+              <ContactPhoto
+                src={contactImage}
+                alt="Contact us for professional cleaning services"
+                loading="lazy"
+                decoding="async"
+              />
             </MobilePhotoSection>
 
             {/* Contact Form */}
@@ -401,7 +414,9 @@ const ContactSection = () => {
           <SectionTitle subtitle="Serving the Greater Austin area and surrounding communities">
             Areas We Service
           </SectionTitle>
-          <ServiceAreaMap />
+          <Suspense fallback={<MapPlaceholder />}>
+            <ServiceAreaMap />
+          </Suspense>
         </Container>
       </Section>
     </>

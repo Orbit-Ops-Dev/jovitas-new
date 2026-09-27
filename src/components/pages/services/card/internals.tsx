@@ -25,7 +25,7 @@ const ServiceDetailCard: React.FC<ServiceDetailCardProps> = ({ service }) => {
   return (
     <>
       <Card id={service.slug} onClick={handleCardClick} $hasGallery={!!service.gallery}>
-        {service.image && <ServiceImage src={service.image} alt={service.title} />}
+        {service.image && <ServiceImage src={service.image} alt={service.title} loading="lazy" decoding="async" />}
         <CardContent>
           <ServiceTitle>{service.title}</ServiceTitle>
           <ServiceDescription>{service.description}</ServiceDescription>

@@ -379,3 +379,11 @@ export const ReferralFineprint = styled.p`
   color: ${({ theme }) => theme.colors.textLight};
   margin: ${({ theme }) => theme.spacing.xs} 0 0;
 `;
+
+// Reserves the map's height while its lazy chunk loads so the page doesn't shift.
+export const MapPlaceholder = styled.div`
+  height: 450px;
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  background: ${({ theme }) => theme.colors.white};
+  box-shadow: ${({ theme }) => theme.shadows.md};
+`;

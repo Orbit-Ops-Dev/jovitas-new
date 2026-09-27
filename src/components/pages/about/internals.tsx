@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Section from '../../common/section/Section';
 import Container from '../../common/container/internals';
 import FAQAccordion from './faq/internals';
@@ -16,7 +17,32 @@ import {
   FeatureText,
 } from './styled';
 
+const FAQ_JSONLD_ID = 'faq-jsonld';
+
 const AboutSection = () => {
+  // FAQPage structured data built from the same data the accordion renders.
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = FAQ_JSONLD_ID;
+    script.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(faq => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: [faq.answer, faq.answerList?.join(', ')].filter(Boolean).join(' '),
+        },
+      })),
+    });
+    document.head.appendChild(script);
+
+    // Remove only our own script; the business JSON-LD in index.html must stay.
+    return () => script.remove();
+  }, []);
+
   return (
     <>
       {/* About: our approach + what sets us apart */}

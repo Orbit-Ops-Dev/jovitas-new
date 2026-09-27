@@ -29,7 +29,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           Your browser does not support the video tag.
         </HeroVideo>
       )}
-      {variant === 'image' && imageSrc && <HeroImage src={imageSrc} alt="" aria-hidden />}
+      {variant === 'image' && imageSrc && <HeroImage src={imageSrc} alt="" aria-hidden fetchPriority="high" />}
       <HeroOverlay $hasVideo={variant === 'video' || variant === 'image'} />
       <HeroContent>
         <Container>

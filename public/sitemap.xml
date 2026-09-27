@@ -5,9 +5,13 @@
   <!-- Home Page -->
   <url>
     <loc>https://jovitascleaningservice.com/</loc>
-    <lastmod>2025-11-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://jovitascleaningservice.com/og-image.jpg</image:loc>
+      <image:title>Jovita's Cleaning Service - Professional Cleaning in Austin, TX</image:title>
+    </image:image>
     <image:image>
       <image:loc>https://jovitascleaningservice.com/logo-pink-output.png</image:loc>
       <image:title>Jovita's Cleaning Service Logo</image:title>

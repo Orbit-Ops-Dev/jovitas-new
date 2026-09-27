@@ -26,15 +26,15 @@ const Lightbox: React.FC<LightboxProps> = ({ images, isOpen, onClose, initialInd
       if (e.key === 'Escape') {
         onClose();
       } else if (e.key === 'ArrowLeft') {
-        goToPrevious();
+        setCurrentIndex(prev => (prev - 1 + images.length) % images.length);
       } else if (e.key === 'ArrowRight') {
-        goToNext();
+        setCurrentIndex(prev => (prev + 1) % images.length);
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, currentIndex]);
+  }, [isOpen, images.length, onClose]);
 
   const goToNext = () => {
     setCurrentIndex(prev => (prev + 1) % images.length);
@@ -80,6 +80,8 @@ const Lightbox: React.FC<LightboxProps> = ({ images, isOpen, onClose, initialInd
                 key={index}
                 src={image}
                 alt={`Thumbnail ${index + 1}`}
+                loading="lazy"
+                decoding="async"
                 $isActive={index === currentIndex}
                 onClick={() => setCurrentIndex(index)}
               />
